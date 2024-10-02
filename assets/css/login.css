@@ -12,7 +12,7 @@
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  margin: -20px 0 50px;
+  margin: 0px 0 50px;
   overflow-y: hidden;
 }
 
@@ -224,27 +224,26 @@ input {
   width: 40px;
 }
 
-footer {
-  background-color: #222;
-  color: #fff;
+/* Centered HOME button at the bottom */
+.home-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.home-btn {
+  border: none;
+  border-radius: 20px;
+  padding: 12px 45px;
+  background-color: #2e0e8c;
+  color: white;
   font-size: 14px;
-  bottom: 0;
-  position: fixed;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 999;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-footer p {
-  margin: 10px 0;
-}
-
-footer i {
-  color: red;
-}
-
-footer a {
-  color: #3c97bf;
-  text-decoration: none;
+.home-btn:hover {
+  background-color: #00b330;
 }
