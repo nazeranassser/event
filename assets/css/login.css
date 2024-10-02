@@ -12,7 +12,7 @@
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  margin: 0px 0 50px;
+  margin: 0 0 50px;
   overflow-y: hidden;
 }
 
@@ -100,12 +100,16 @@ input {
   min-height: 480px;
 }
 
-.signup-wrapper {
+.signup-wrapper,
+.signin-wrapper {
   position: absolute;
   top: 0;
   height: 100%;
   transition: all 0.6s ease-in-out;
   width: 50%;
+}
+
+.signup-wrapper {
   z-index: 2;
 }
 
@@ -115,7 +119,6 @@ input {
 
 .signin-wrapper {
   left: 0;
-  width: 50%;
   opacity: 0;
   z-index: 1;
 }
@@ -133,7 +136,6 @@ input {
     opacity: 0;
     z-index: 1;
   }
-
   50%,
   100% {
     opacity: 1;
@@ -157,12 +159,7 @@ input {
 }
 
 .overlay-content {
-  background: #2e0e8c;
-  background: -webkit-linear-gradient(to right, #2e0e8c, #2e0e8c);
   background: linear-gradient(to right, #2e0e8c, #2e0e8c);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
   color: #ffffff;
   position: relative;
   left: -100%;
