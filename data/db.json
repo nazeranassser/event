@@ -1,0 +1,109 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "toto",
+      "email": "jane@example.com",
+      "password": "hashed_password2",
+      "publishedEvents": [],
+      "registeredEvents": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "2",
+      "username": "soso",
+      "email": "jane@example.com",
+      "password": "hashed_password2",
+      "publishedEvents": [],
+      "registeredEvents": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "3",
+      "username": "soso",
+      "email": "jane@example.com",
+      "password": "hashed_password2",
+      "publishedEvents": [],
+      "registeredEvents": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "4",
+      "username": "soso",
+      "email": "jane@example.com",
+      "password": "hashed_password2",
+      "publishedEvents": [],
+      "registeredEvents": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "5",
+      "username": "soso",
+      "email": "jane@example.com",
+      "password": "hashed_password2",
+      "publishedEvents": [],
+      "registeredEvents": [
+        1,
+        3
+      ]
+    }
+  ],
+  "events": [
+    {
+      "id": "1",
+      "title": "Tech Conference 2024",
+      "description": "A conference about the latest in technology.",
+      "image": "tech_conference.jpg",
+      "category": "Technology",
+      "startTime": "2024-11-20T09:00:00",
+      "endTime": "2024-11-20T17:00:00",
+      "location": "Amman, Jordan",
+      "organizer": 1,
+      "totalSeats": 100,
+      "bookedSeats": 60,
+      "attendees": [
+        2
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Startup Workshop",
+      "description": "A workshop for aspiring startup founders.",
+      "image": "startup_workshop.jpg",
+      "category": "Business",
+      "startTime": "2024-10-15T14:00:00",
+      "endTime": "2024-10-15T16:00:00",
+      "location": "Online",
+      "organizer": 2,
+      "totalSeats": 50,
+      "bookedSeats": 40,
+      "attendees": [
+        1
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Music Festival",
+      "description": "A festival showcasing local and international artists.",
+      "image": "music_festival.jpg",
+      "category": "Entertainment",
+      "startTime": "2024-12-05T18:00:00",
+      "endTime": "2024-12-05T23:00:00",
+      "location": "Dead Sea, Jordan",
+      "organizer": 1,
+      "totalSeats": 500,
+      "bookedSeats": 450,
+      "attendees": [
+        2
+      ]
+    }
+  ]
+}
