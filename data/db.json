@@ -54,6 +54,22 @@
         1,
         3
       ]
+    },
+    {
+      "id": "c7ee",
+      "username": "mousa.alaaldin2000@gmail.com",
+      "email": "mousa.alaaldin2000@gmail.com",
+      "publishedEvents": [],
+      "password": "123456789Mm",
+      "registeredEvents": []
+    },
+    {
+      "id": "f450",
+      "username": "mousa@gmail.com",
+      "email": "mousa@gmail.com",
+      "publishedEvents": [],
+      "password": "123456789Mm",
+      "registeredEvents": []
     }
   ],
   "events": [

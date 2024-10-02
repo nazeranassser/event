@@ -11,22 +11,13 @@ signInButton.addEventListener('click', () => {
 });
 
 
-
-
-
-
 var userNameField = document.getElementById("floatingUserName");
 var emailField = document.getElementById("floatingEmail");
 var passwordField = document.getElementById("floatingPassword");
 var confirmPasswordField = document.getElementById("floatingConfirmPassword");
 var registerButton = document.getElementById("floatingRegister");
-
-
-
-
 async function registerUser(event) {
     event.preventDefault();
-
    
     if (!userNameField.value || !emailField.value || !passwordField.value || !confirmPasswordField.value) {
         alert("All fields are required!");
