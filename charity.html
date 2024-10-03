@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="assets/css/event-card.css" />
    
 </head>
-<body>
+<body onload="viewEvents()">
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -106,8 +106,8 @@
 
        <!-- Newspaper Section Start -->
        <section class="newspaper-section">
-        <div class="newspaper-container">
-            <div class="newspaper-box">
+        <div class="newspaper-container" id="events-box">
+            <div class="newspaper-box" >
                 <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image" class="newspaper-img" />
                 <h2 class="newspaper-title">Charity Event 1</h2>
                 <p class="newspaper-description">
@@ -257,6 +257,7 @@
     <script src="./assets/js/main.js"></script>
     <script src="./Doc/js/book.js"></script>
 
-    
+    <!-- Add events -->
+     <script src="./Doc/js/getData.js"></script>
     </body>
 </html>
