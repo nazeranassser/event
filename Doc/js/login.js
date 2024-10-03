@@ -90,3 +90,116 @@ async function registerUser(event) {
 
 
 registerButton.addEventListener("click", registerUser);
+
+
+
+// =============================================================
+
+var loginEmail = document.getElementById("loginEmail");
+var loginPassword = document.getElementById("loginPassword");
+var loginSubmit = document.getElementById("loginSubmit");
+var loginEmail = document.getElementById("loginEmail");
+var loginPassword = document.getElementById("loginPassword");
+var loginSubmit = document.getElementById("loginSubmit");
+
+async function loginUser(event) {
+    event.preventDefault(); 
+
+    if (loginEmail.value === "" || loginPassword.value === "") {
+        alert("Both fields are required!");
+        return;
+    }
+
+    const apiUrl = "http://localhost:3000/users";
+    
+    try {
+        const response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        let validUser = data.find(user => user.email === loginEmail.value && user.password === loginPassword.value);
+
+        if (validUser) {
+            alert("Login successful!");
+            localStorage.setItem("isLoggedIn", "true"); 
+            window.location.href = "index.html";  
+        } else {
+            alert("Invalid email or password!");
+        }
+
+    } catch (error) {
+        console.error("Error fetching users:", error);
+        alert("There was a problem with the login. Please try again.");
+    }
+
+ 
+    loginEmail.value = "";
+    loginPassword.value = "";
+}
+
+loginSubmit.addEventListener("click", loginUser);
+
+
+
+// function loginUser(event) {
+//     event.preventDefault(); 
+
+//     if (loginEmail.value === "" || loginPassword.value === "") {
+//         alert("Both fields are required!");
+//         return;
+//     }
+
+//     var users = JSON.parse(localStorage.getItem("users")) || [];
+
+//     var validUser = users.find(function(user) {
+//         return user.email === loginEmail.value && user.password === loginPassword.value;
+//     });
+
+//     if (validUser) {
+//         alert("Login successful!");
+
+       
+//         localStorage.setItem("isLoggedIn", "true");
+        
+//         window.location.href = "home.html";  
+//     } else {
+//         alert("Invalid email or password!");
+//     }
+
+//     loginEmail.value = "";
+//     loginPassword.value = "";
+// }
+
+// loginSubmit.addEventListener("click", loginUser);
+
+// window.onload = function() {
+//     var isLoggedIn = localStorage.getItem("isLoggedIn");
+
+   
+//     if (isLoggedIn === "true") {
+//         window.location.href = "home.html";  
+//     }
+// };
+
+// var registerButton = document.getElementById("register");
+
+// registerButton.addEventListener("click", function(event) {
+//     event.preventDefault();  
+
+  
+//     window.location.href = "register.html"; 
+// });
+// =========================
+// const apiUrl = "http://localhost:3000/users"
+// const response = await fetch(apiUrl);
+// const data = JSON.parse(response)
+
+// let result = data.find(function(user) {
+//     return user.email === loginEmail.value && user.password === loginPassword.value;
+// })
+
+// console.log(result)
