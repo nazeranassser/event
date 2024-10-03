@@ -78,6 +78,14 @@
       "publishedEvents": [],
       "password": "123456789Mm",
       "registeredEvents": []
+    },
+    {
+      "id": "68e1",
+      "username": "mousa",
+      "email": "mousa.alaaldin@gmail.com",
+      "password": "123456789Mm",
+      "publishedEvents": [],
+      "registeredEvents": []
     }
   ],
   "events": [

@@ -62,3 +62,29 @@
 .book-now-btn:hover {
   background-color: #1e036d;
 }
+.counter-container {
+  margin-top: 10px;
+}
+
+.click-counter {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.icon-counter i {
+  color: #f05a28;
+  margin-right: 5px;
+}
+.counter-container {
+  margin-top: 10px;
+}
+
+.click-counter {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.icon-counter i {
+  color: #f05a28;
+  margin-right: 5px;
+}
