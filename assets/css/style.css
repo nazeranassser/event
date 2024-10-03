@@ -3725,7 +3725,7 @@ hr {
   transform: 0.4s;
   transform: translateY(60px);
   opacity: 0;
-  visibility: hidden;
+  visibility:visible;
 }
 
 .team-social li a i {
