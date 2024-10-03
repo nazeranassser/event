@@ -86,7 +86,7 @@ async function registerUser(event) {
         });
 
         if (!registerResponse.ok) {
-            throw new Error("Error creating user");
+            throw new Error("Error creating user");م
         }
 
         alert("Registration successful!");
