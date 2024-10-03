@@ -1,112 +1,127 @@
+
+const userNameField = document.getElementById("floatingUserName");
+const emailField = document.getElementById("floatingEmail");
+const passwordField = document.getElementById("floatingPassword");
+const confirmPasswordField = document.getElementById("floatingConfirmPassword");
+const registerButton = document.getElementById("floatingRegister");
+
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 
+const loginEmail = document.getElementById("loginEmail");
+const loginPassword = document.getElementById("loginPassword");
+const loginSubmit = document.getElementById("loginSubmit");
+
+
 signUpButton.addEventListener('click', () => {
-	container.classList.add("right-panel-active");
+    container.classList.add("right-panel-active");
 });
 
 signInButton.addEventListener('click', () => {
-	container.classList.remove("right-panel-active");
+    container.classList.remove("right-panel-active");
 });
 
 
-var userNameField = document.getElementById("floatingUserName");
-var emailField = document.getElementById("floatingEmail");
-var passwordField = document.getElementById("floatingPassword");
-var confirmPasswordField = document.getElementById("floatingConfirmPassword");
-var registerButton = document.getElementById("floatingRegister");
 async function registerUser(event) {
     event.preventDefault();
-   
+
+    
+    registerButton.disabled = true;
+
+    
     if (!userNameField.value || !emailField.value || !passwordField.value || !confirmPasswordField.value) {
         alert("All fields are required!");
+        registerButton.disabled = false;
         return;
     }
 
    
     if (passwordField.value !== confirmPasswordField.value) {
         alert("Passwords do not match!");
+        registerButton.disabled = false;
         return;
     }
 
-    var passwordRegex = /^(?=.*\d)(?=.*[A-Z]).{8,}$/;
+
+    const passwordRegex = /^(?=.*\d)(?=.*[A-Z]).{8,}$/;
     if (!passwordRegex.test(passwordField.value)) {
         alert("Password must be at least 8 characters long and contain at least one number and one uppercase letter.");
+        registerButton.disabled = false;
         return;
     }
 
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(emailField.value)) {
         alert("Please enter a valid email address.");
+        registerButton.disabled = false;
         return;
     }
 
-    
-    var users = JSON.parse(localStorage.getItem("users")) || [];
+    try {
+      
+        const response = await fetch("http://localhost:3000/users");
+        const users = await response.json();
 
+        const emailExists = users.some(user => user.email === emailField.value);
+        if (emailExists) {
+            alert("This email is already registered!");
+            registerButton.disabled = false;
+            return;
+        }
 
-    var emailExists = users.some(function(user) {
-        return user.email === emailField.value;
-    });
+        
+        const apiUrl = "http://localhost:3000/users";
+        const registerResponse = await fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                username: userNameField.value,
+                email: emailField.value,
+                password: passwordField.value,
+                publishedEvents: [],
+                registeredEvents: []
+            })
+        });
 
-    if (emailExists) {
-        alert("This email is already registered!");
-        return;
+        if (!registerResponse.ok) {
+            throw new Error("Error creating user");
+        }
+
+        alert("Registration successful!");
+
+       
+        userNameField.value = "";
+        emailField.value = "";
+        passwordField.value = "";
+        confirmPasswordField.value = "";
+
+        
+        window.location.href = "login.html";
+
+    } catch (error) {
+        console.error("Error registering user:", error);
+        alert("There was an error registering. Please try again.");
+    } finally {
+       
+        registerButton.disabled = false;
     }
-
-  
-    var newUser = {
-        username: userNameField.value,
-        email: emailField.value,
-        password: passwordField.value,
-        booking: [],
-    };
-
-    // users.push(newUser);
-    // localStorage.setItem("users", JSON.stringify(users));
-    // alert("Registration successful!");
-
-
-    const apiUrl = "http://localhost:3000/users"
-    const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            "username": userNameField.value,
-            "email":emailField.value ,
-            "publishedEvents": [],
-            "password": passwordField.value,
-            "registeredEvents":[]
-        })
-    });
-
-
-    userNameField.value = "";
-    emailField.value = "";
-    passwordField.value = "";
-    confirmPasswordField.value = "";
 }
 
 
 registerButton.addEventListener("click", registerUser);
 
-
-
-// =============================================================
-
-var loginEmail = document.getElementById("loginEmail");
-var loginPassword = document.getElementById("loginPassword");
-var loginSubmit = document.getElementById("loginSubmit");
-var loginEmail = document.getElementById("loginEmail");
-var loginPassword = document.getElementById("loginPassword");
-var loginSubmit = document.getElementById("loginSubmit");
-
 async function loginUser(event) {
     event.preventDefault(); 
 
+  
+    loginSubmit.disabled = true; 
+
+  
     if (loginEmail.value === "" || loginPassword.value === "") {
         alert("Both fields are required!");
+        loginSubmit.disabled = false;
         return;
     }
 
@@ -121,7 +136,7 @@ async function loginUser(event) {
 
         const data = await response.json();
 
-        let validUser = data.find(user => user.email === loginEmail.value && user.password === loginPassword.value);
+        const validUser = data.find(user => user.email === loginEmail.value && user.password === loginPassword.value);
 
         if (validUser) {
             alert("Login successful!");
@@ -134,72 +149,15 @@ async function loginUser(event) {
     } catch (error) {
         console.error("Error fetching users:", error);
         alert("There was a problem with the login. Please try again.");
+    } finally {
+      
+        loginSubmit.disabled = false;
     }
 
- 
+   
     loginEmail.value = "";
     loginPassword.value = "";
 }
 
+
 loginSubmit.addEventListener("click", loginUser);
-
-
-
-// function loginUser(event) {
-//     event.preventDefault(); 
-
-//     if (loginEmail.value === "" || loginPassword.value === "") {
-//         alert("Both fields are required!");
-//         return;
-//     }
-
-//     var users = JSON.parse(localStorage.getItem("users")) || [];
-
-//     var validUser = users.find(function(user) {
-//         return user.email === loginEmail.value && user.password === loginPassword.value;
-//     });
-
-//     if (validUser) {
-//         alert("Login successful!");
-
-       
-//         localStorage.setItem("isLoggedIn", "true");
-        
-//         window.location.href = "home.html";  
-//     } else {
-//         alert("Invalid email or password!");
-//     }
-
-//     loginEmail.value = "";
-//     loginPassword.value = "";
-// }
-
-// loginSubmit.addEventListener("click", loginUser);
-
-// window.onload = function() {
-//     var isLoggedIn = localStorage.getItem("isLoggedIn");
-
-   
-//     if (isLoggedIn === "true") {
-//         window.location.href = "home.html";  
-//     }
-// };
-
-// var registerButton = document.getElementById("register");
-
-// registerButton.addEventListener("click", function(event) {
-//     event.preventDefault();  
-
-  
-//     window.location.href = "register.html"; 
-// });
-// =========================
-// const apiUrl = "http://localhost:3000/users"
-// const response = await fetch(apiUrl);
-// const data = JSON.parse(response)
-
-// let result = data.find(function(user) {
-//     return user.email === loginEmail.value && user.password === loginPassword.value;
-// })
-
-// console.log(result)
