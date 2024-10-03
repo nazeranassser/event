@@ -137,10 +137,17 @@ async function loginUser(event) {
         const data = await response.json();
 
         const validUser = data.find(user => user.email === loginEmail.value && user.password === loginPassword.value);
+        const userInfo = data.findIndex(user => user.email === loginEmail.value );
+       
+        
 
         if (validUser) {
-            alert("Login successful!");
+            alert(userInfo
+            )
+            console.log('##########################');
+            
             localStorage.setItem("isLoggedIn", "true"); 
+            localStorage.setItem("userInfo", JSON.stringify(data[userInfo]));
             window.location.href = "index.html";  
         } else {
             alert("Invalid email or password!");
