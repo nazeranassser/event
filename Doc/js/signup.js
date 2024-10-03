@@ -1,14 +1,21 @@
 window.onload = function() {
     var isLoggedIn = localStorage.getItem("isLoggedIn");
+    var logoutBtn = document.getElementById("logoutBtn");
+    var bookNow = document.getElementById("BookNow");
 
-    // Handle the logout button click
-    document.getElementById("logoutBtn").onclick = function() {
-        localStorage.setItem("isLoggedIn", "false"); // Set login status to false
-     
-    };
-
-    // Optional: Redirect to index.html if already logged in
+  
     if (isLoggedIn === "true") {
-       
+        logoutBtn.style.display = "block"; 
+        bookNow.style.display = "none"; 
+    } else {
+        logoutBtn.style.display = "none"; 
+        bookNow.style.display = "block";
     }
+
+
+    logoutBtn.onclick = function() {
+        localStorage.setItem("isLoggedIn", "false");
+        logoutBtn.style.display = "none";
+        bookNow.style.display = "block"; 
+    };
 };
