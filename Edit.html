@@ -35,7 +35,7 @@
             padding: 0;
         }
         .form-container {
-            max-width: 600px;
+            max-width: 70%;
             margin: 50px auto;
             padding: 20px;
             background-color: white;
@@ -82,7 +82,7 @@
 <body>
     <header>
         <div class="header-area">
-            <div class="main-header header-sticky">
+            <div class="main-header header-sticky shadow">
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2 col-md-1">
@@ -125,61 +125,100 @@
     <section class="form-section">
         <div class="form-container">
             <h2>Create an Event</h2>
-            <form>
-                <!-- Title -->
-                <div class="form-group">
-                    <label for="title">Event Title</label>
-                    <input type="text" id="title" name="title" placeholder="Enter event title" required>
-                </div>
 
-                <!-- Description -->
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea id="description" name="description" rows="4" placeholder="Enter event description" required></textarea>
-                </div>
+            <div id="success"></div>
 
-                <!-- Image Upload -->
-                <div class="form-group">
-                    <label for="image">Upload Image</label>
-                    <input type="file" id="image" name="image" accept="image/*" required>
-                </div>
+            <form id="newEventForm" method="POST" style="margin-top: 45px;">
 
-                <!-- Categories Dropdown -->
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category" name="category" required>
-                        <option value="charity">Charity</option>
-                        <option value="food">Food & Fitness</option>
-                        <option value="cultural">Cultural Events</option>
-                        <option value="corporate">Corporate Events</option>
-                    </select>
-                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-6 me-5">
+                        <!-- Title -->
+                        <div class="form-group">
+                            <label for="title">Event Title</label>
+                            <input type="text" id="title" name="title" placeholder="Enter event title">
+                            <span id="titleErrorMsg" class="text-danger"></span>
+                        </div>
 
-                <!-- Start Time -->
-                <div class="form-group">
-                    <label for="start_time">Start Time</label>
-                    <input type="time" id="start_time" name="start_time" required>
-                </div>
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" rows="4" placeholder="Enter event description"></textarea>
+                            <span id="descriptionErrorMsg" class="text-danger"></span>
+                        </div>
 
-                <!-- End Time -->
-                <div class="form-group">
-                    <label for="end_time">End Time</label>
-                    <input type="time" id="end_time" name="end_time" required>
-                </div>
+                        <!-- Image Upload -->
+                        <div class="form-group">
+                            <label for="image">Upload Image</label>
+                            <input type="file" id="image" name="image" accept="image/*">
+                            <span id="imageErrorMsg" class="text-danger"></span>
+                        </div>
 
-                <!-- Location -->
-                <div class="form-group">
-                    <label for="location">Location</label>
-                    <input type="text" id="location" name="location" placeholder="Enter event location" required>
+                    </div>
+
+
+                    <div class="col-sm-12 col-lg-6 ms-5">
+                        <!-- Categories Dropdown -->
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" name="category">
+                                <option value="">Select Category</option>
+                                <option value="charity">Charity</option>
+                                <option value="food">Food & Fitness</option>
+                                <option value="cultural">Cultural Events</option>
+                                <option value="corporate">Corporate Events</option>
+                            </select>
+                            <span id="categoryErrorMsg" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6">
+                                <!-- Start Time -->
+                                <div class="form-group">
+                                    <label for="start_time">Start Time</label>
+                                    <input type="datetime-local" id="start_time" name="start_time">
+                                    <span id="startErrorMsg" class="text-danger"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-12 col-lg-6">
+                                <!-- End Time -->
+                                <div class="form-group">
+                                    <label for="end_time">End Time</label>
+                                    <input type="datetime-local" id="end_time" name="end_time">
+                                    <span id="endErrorMsg" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Seats -->
+                        <div class="form-group">
+                            <label for="location">Total Seats</label>
+                            <input type="number" id="seats" name="seats" placeholder="Enter Total seats" min="1">
+                            <span id="seatsErrorMsg" class="text-danger"></span>
+                        </div>
+
+
+                        <!-- Location -->
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" placeholder="Enter event location">
+                            <span id="locationErrorMsg" class="text-danger"></span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Submit Button -->
                 <div class="form-group">
-                    <button type="submit">Create Event</button>
+                    <button type="button" onclick="getEventData()">Create Event</button>
                 </div>
             </form>
         </div>
     </section>
+
+
+
+
     <section class="newspaper-section">
         <div class="newspaper-container">
             <div class="newspaper-box">
@@ -197,6 +236,9 @@
             </div>
         </div>
     </section>
+
+
+
     <footer id="footer">
         <!-- Footer Start -->
         <div class="footer-area footer-padding">
@@ -272,7 +314,12 @@
                 </div>
             </div>
           <!-- Footer End-->
-      </footer >
-                    <script src="./assets/js/plugins.js"></script>
-                    <script src="./assets/js/main.js"></script>
-                    <script src="./Doc/js/book.js"></script>
+    </footer >
+
+
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./Doc/js/book.js"></script>
+
+    <script src="./assets/js/event/new-event.js"></script>
+</body>
