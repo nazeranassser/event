@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="assets/css/hr-line1.css" />
     <link rel="stylesheet" href="assets/css/event-card.css" />
 
+    <script>
+        document.body.onload = (localStorage.getItem('isLoggedIn') == 'false')? location.href = 'index.html':'';
+    </script>
+
     <style>
         /* General Styling */
         body {
