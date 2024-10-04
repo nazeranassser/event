@@ -72,6 +72,80 @@ async function getFilteredEvents(filterValue) {
         console.error(error.message);
     }
 }
+// function compareDates(biggerDate, smallerDate){ //check if biggerDate is bigger than smallerDate
+//     date1 = new Date(biggerDate);
+//     date2 = new Date(smallerDate);
+//     if(date1 > date2){
+//         return true;
+//     }else{
+//         return false
+//     }
+//   }
+// async function timeFilter(filter) {
+//     try {
+//         const url = `http://localhost:3000/events`;
+//         const response = await fetch(url);
+
+//         if (!response.ok) {
+//         throw new Error(`Response status: ${response.status}`);
+//         }
+//         const events = await response.json();
+//         let filteredEvents = [];
+//         const currentDate = new Date();
+//         let eventTime;
+//         for(let i = 0; i < events.length; i++){ 
+//             eventTime =  Date(events[i].startTime);
+//             // console.log(compareDates(filter, eventTime));
+//             if(compareDates(eventTime, filter)){
+//                 filteredEvents.push(events[i]);
+//             }
+//         }
+//         return filteredEvents;
+//     } catch (error) {  
+//         console.error(error.message);
+//     }
+// }
+
+function compareDates(biggerDate, smallerDate) {
+    const date1 = new Date(biggerDate); // Declare with const/let
+    const date2 = new Date(smallerDate);
+
+    // Check if the first date is greater than or equal to the second one
+    return date1 >= date2;
+}
+
+async function timeFilter(startDate, endDate) {
+    try {
+        const url = `http://localhost:3000/events`;
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const events = await response.json();
+        let filteredEvents = [];
+
+        const start = new Date(startDate); // Start date (passed as a parameter)
+        const end = new Date(endDate); // End date (passed as a parameter)
+
+        for (let i = 0; i < events.length; i++) {
+            const eventTime = new Date(events[i].startTime); // Event start time as Date object
+
+            // Check if eventTime is between startDate and endDate
+            if (compareDates(eventTime, start) && compareDates(end, eventTime)) {
+                filteredEvents.push(events[i]);
+            }
+        }
+
+        return filteredEvents;
+    } catch (error) {  
+        console.error(error.message);
+    }
+}
+
+
+
 async function getEvent(id) {
     try {
         const url = `http://localhost:3000/events/${id}`;
@@ -212,60 +286,72 @@ async function UnBookSeat(userId, eventId){
        console.log("please login first")
    }
 }
-async function viewEvents(filter){
+async function viewEvents(filter, filterDate) {
     let events;
-    if(filter){
+
+    if (filter) {
         events = await getFilteredEvents(filter);
-    }else{
+    } else if (filterDate) {
+        // Set the startDate to filterDate
+        const startDate = new Date(filterDate);
+        
+        // Set the endDate to 3 days from the filterDate
+        const endDate = new Date();
+        endDate.setDate(startDate.getDate() + 3);
+        
+        // Call the timeFilter function with startDate and endDate
+        events = await timeFilter(startDate, endDate);
+        console.log("Filtered by time range");
+    } else {
         events = await getAllEvents();
     }
+
     let box = document.getElementById("events-box");
     let newHTML = '';
     let bookBtn, isBooked;
-    let timeArray, date,  time;
+    let timeArray, date, time;
     let userInfo, userId;
-    if(localStorage.getItem('isLoggedIn') == 'true'){
-        userInfo = JSON.parse(localStorage.getItem('userInfo'));//
-        userId = userInfo.id; //
+
+    if (localStorage.getItem('isLoggedIn') == 'true') {
+        userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        userId = userInfo.id;
     }
 
-    
-    for(let i = 0; i < events.length; i++){
-        //extract time and date from date string
+    for (let i = 0; i < events.length; i++) {
+        // Extract time and date from the date string
         timeArray = events[i].startTime.split('T');
         date = timeArray[0];
         time = timeArray[1];
-        
-        // console.log(userId +' '+ events[i].id);
-        // console.log(isBooked);
-        if(localStorage.getItem('isLoggedIn') == 'true'){
-            isBooked = await bookedOrNot(Number(userId), Number(events[i].id));//
-            if(isBooked == true){ //
-                bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}',${events[i].id})">UnBook</button>`; //
-            }else{////
-                bookBtn = `<button class="book-now-btn" onclick="bookSeat('${userId}',${events[i].id})">Book</button>`;//
-            } //
-        }else{
-            bookBtn = `<a href="login.html" class="btn card-btn">Book Now!</a>`;//
-        }
-        
-        newHTML +=
-        `<div class="newspaper-box">
-                <img src="./assets/img/events/${events[i].image}" alt="Event Image" class="newspaper-img" />
-                <h2 class="newspaper-title">${events[i].title} <span class="tags">#${events[i].category}</span></h2>
-                <p class="newspaper-description">${events[i].description}</p>
-                <div class="event-icons">
-                    <p class="icon"><i class="fas fa-clock"></i> ${date} (${time})</p>
-                    <p class="icon"><i class="fas fa-map-marker-alt"></i> ${events[i].location}</p> 
-                    <p class="icon click-counter"><i class="fa-solid fa-chair"></i> Seats: ${events[i].bookedSeats}/${events[i].totalSeats}</p>
-                </div>
-                ${bookBtn}
-            </div>`;
 
+        if (localStorage.getItem('isLoggedIn') == 'true') {
+            isBooked = await bookedOrNot(Number(userId), Number(events[i].id));
+            if (isBooked == true) {
+                bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}',${events[i].id})">UnBook</button>`;
+            } else {
+                bookBtn = `<button class="book-now-btn" onclick="bookSeat('${userId}',${events[i].id})">Book</button>`;
+            }
+        } else {
+            bookBtn = `<a href="login.html" class="btn card-btn">Book Now!</a>`;
+        }
+
+        newHTML += `
+        <div class="newspaper-box">
+            <img src="./assets/img/events/${events[i].image}" alt="Event Image" class="newspaper-img" />
+            <h2 class="newspaper-title">${events[i].title} <span class="tags">#${events[i].category}</span></h2>
+            <p class="newspaper-description">${events[i].description}</p>
+            <div class="event-icons">
+                <p class="icon"><i class="fas fa-clock"></i> ${date} (${time})</p>
+                <p class="icon"><i class="fas fa-map-marker-alt"></i> ${events[i].location}</p> 
+                <p class="icon click-counter"><i class="fa-solid fa-chair"></i> Seats: ${events[i].bookedSeats}/${events[i].totalSeats}</p>
+            </div>
+            ${bookBtn}
+        </div>`;
     }
-    // console.log(events);
+
     box.innerHTML = newHTML;
 }
+
+
 ///////// Add filtration to the page
 document.getElementById("all-filter-btn").onclick = function() {viewEvents()};
 document.getElementById("charity-filter-btn").onclick = function() {viewEvents('charity')}
@@ -283,9 +369,11 @@ document.getElementById("games-filter-btn").onclick = function() { viewEvents('g
 //////////////
 //////////// testing area
 // getAllEvents()
-// (async () => {
-//     console.log(await getFilteredEvents('Entertainment'))
-//   })()
+(async () => {
+    // console.log(await getFilteredEvents('Entertainment'))
+    console.log(await timeFilter('2024-11-04T03:39'));
+
+  })()
 
 
 
