@@ -90,9 +90,7 @@
       "email": "shadi@mail.com",
       "password": "Shadi123!",
       "publishedEvents": [],
-      "registeredEvents": [
-        1
-      ]
+      "registeredEvents": []
     }
   ],
   "events": [
@@ -107,10 +105,8 @@
       "location": "Amman, Jordan",
       "organizer": 1,
       "totalSeats": 100,
-      "bookedSeats": 77,
-      "attendees": [
-        10
-      ]
+      "bookedSeats": 76,
+      "attendees": []
     },
     {
       "id": "2",
@@ -141,8 +137,7 @@
       "totalSeats": 500,
       "bookedSeats": 459,
       "attendees": [
-        2,
-        10
+        2
       ]
     },
     {
@@ -157,9 +152,7 @@
       "organizer": "8646",
       "totalSeats": 100,
       "bookedSeats": 1,
-      "attendees": [
-        10
-      ]
+      "attendees": []
     },
     {
       "id": "5",
@@ -173,9 +166,7 @@
       "organizer": "8646",
       "totalSeats": 100,
       "bookedSeats": 2,
-      "attendees": [
-        10
-      ]
+      "attendees": []
     },
     {
       "id": "6",
@@ -189,9 +180,7 @@
       "organizer": "8646",
       "totalSeats": 100,
       "bookedSeats": 1,
-      "attendees": [
-        10
-      ]
+      "attendees": []
     }
   ]
 }
