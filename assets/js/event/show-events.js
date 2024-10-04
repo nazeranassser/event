@@ -114,8 +114,3 @@ async function showEvents(events, container, own){
   }
 
 }
-
-
-function deleteEvent(eventID){
-  console.log("deleteEvent : " + eventID)
-}

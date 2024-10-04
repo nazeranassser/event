@@ -245,20 +245,6 @@
       "attendees": []
     },
     {
-      "id": "0748",
-      "title": "Hic quo laborum eu d",
-      "description": "Culpa quam rerum qu",
-      "image": "blog-bg.jpeg",
-      "category": "corporate",
-      "startTime": "2024-10-18T04:49",
-      "endTime": "2024-10-31T01:51",
-      "location": "Suscipit minima mole",
-      "organizer": "9",
-      "totalSeats": 65,
-      "bookedSeats": 0,
-      "attendees": []
-    },
-    {
       "id": "e553",
       "title": "Incidunt dolor dolo",
       "description": "Sed dolor dolores im",
@@ -269,6 +255,20 @@
       "location": "Quo libero architect",
       "organizer": "9",
       "totalSeats": 92,
+      "bookedSeats": 0,
+      "attendees": []
+    },
+    {
+      "id": "8d99",
+      "title": "Nulla voluptas praes",
+      "description": "Dolorem et maiores e",
+      "image": "blog-bg.jpeg",
+      "category": "charity",
+      "startTime": "2024-10-05T18:17",
+      "endTime": "2024-10-08T06:35",
+      "location": "Consectetur incididu",
+      "organizer": "9",
+      "totalSeats": 59,
       "bookedSeats": 0,
       "attendees": []
     }
