@@ -183,7 +183,7 @@
             </div>
           </div>
           <section class="newspaper-section">
-            <div class="newspaper-container">
+            <div class="newspaper-container" id="events-box">
                 <div class="newspaper-box">
                     <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image" class="newspaper-img" />
                     <h2 class="newspaper-title">Charity Event 1</h2>
@@ -442,6 +442,13 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
+
+    <!-- Add events -->
+    <script src="./Doc/js/getData.js"></script>
+    <script>
+      const filterDate = new Date(); // Current date
+      window.addEventListener("load", function(){ viewEvents(null, filterDate) });
+    </script>
 
   </body>
 </html>
