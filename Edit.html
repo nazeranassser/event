@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="assets/css/header-text.css" />
     <link rel="stylesheet" href="assets/css/hr-line1.css" />
     <link rel="stylesheet" href="assets/css/event-card.css" />
-    
+
     <style>
         /* General Styling */
         body {
@@ -34,36 +34,67 @@
             margin: 0;
             padding: 0;
         }
+
+        section.container{
+            padding-top: 40px;
+        }
+        .container h2 {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link  {
+            background-color: #fff;
+            color: #1e036d;
+        }
+
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link:hover  {
+            cursor: pointer;
+        }
+
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active  {
+            background-color: #1e036d;
+            color: #fff;
+        }
+
         .form-container {
-            max-width: 70%;
+            /* max-width: 70%; */
             margin: 50px auto;
             padding: 20px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .form-container h2 {
             text-align: center;
             margin-bottom: 20px;
             color: #333;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group label {
             display: block;
             font-weight: bold;
             margin-bottom: 5px;
         }
-        .form-group input, .form-group textarea, .form-group select {
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
         .form-group input[type="file"] {
             padding: 5px;
         }
+
         .form-group button {
             width: 100%;
             padding: 10px;
@@ -73,21 +104,23 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .form-group button:hover {
             background-color: #3e049d;
         }
     </style>
 </head>
 
-<body>
+<body onload="getMyPublishedEvents()">
     <header>
         <div class="header-area">
-            <div class="main-header header-sticky shadow">
+            <div class="main-header header-sticky">
                 <div class="container-fluid">
                     <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="index.html"><img style="height: 50px;" src="/event/assets/img/logo/logo.png" alt="" /></a>
+                                <a href="index.html"><img style="height: 30px;"
+                                        src="https://www.eventat.com/assets/img/logo-b.png" alt="" /></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -111,7 +144,8 @@
                                     </nav>
                                 </div>
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                                    <a href="login.html" class="btn header-btn" style="border-radius: 50px; background-color: #1e036d;">Book Now!</a>
+                                    <a href="login.html" class="btn header-btn"
+                                        style="border-radius: 50px; background-color: #1e036d;">Book Now!</a>
                                 </div>
                             </div>
                         </div>
@@ -119,128 +153,151 @@
                 </div>
             </div>
         </div>
-        				<!-- Mobile Menu -->
-				<div class="col-12">
-                    <div class="mobile_menu d-block d-lg-none"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
     </header>
 
-    <!-- Form Section -->
-    <section class="form-section">
-        <div class="form-container">
-            <h2>Create an Event</h2>
-
-            <div id="success"></div>
-
-            <form id="newEventForm" method="POST" style="margin-top: 45px;">
-
-                <div class="row">
-                    <div class="col-sm-12 col-lg-6 me-5">
-                        <!-- Title -->
-                        <div class="form-group">
-                            <label for="title">Event Title</label>
-                            <input type="text" id="title" name="title" placeholder="Enter event title">
-                            <span id="titleErrorMsg" class="text-danger"></span>
-                        </div>
-
-                        <!-- Description -->
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea id="description" name="description" rows="4" placeholder="Enter event description"></textarea>
-                            <span id="descriptionErrorMsg" class="text-danger"></span>
-                        </div>
-
-                        <!-- Image Upload -->
-                        <div class="form-group">
-                            <label for="image">Upload Image</label>
-                            <input type="file" id="image" name="image" accept="image/*">
-                            <span id="imageErrorMsg" class="text-danger"></span>
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-sm-12 col-lg-6 ms-5">
-                        <!-- Categories Dropdown -->
-                        <div class="form-group">
-                            <label for="category">Category</label>
-                            <select id="category" name="category">
-                                <option value="">Select Category</option>
-                                <option value="charity">Charity</option>
-                                <option value="food">Food & Fitness</option>
-                                <option value="cultural">Cultural Events</option>
-                                <option value="corporate">Corporate Events</option>
-                            </select>
-                            <span id="categoryErrorMsg" class="text-danger"></span>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-sm-12 col-lg-6">
-                                <!-- Start Time -->
-                                <div class="form-group">
-                                    <label for="start_time">Start Time</label>
-                                    <input type="datetime-local" id="start_time" name="start_time">
-                                    <span id="startErrorMsg" class="text-danger"></span>
-                                </div>
-                            </div>
-                            
-                            <div class="col-sm-12 col-lg-6">
-                                <!-- End Time -->
-                                <div class="form-group">
-                                    <label for="end_time">End Time</label>
-                                    <input type="datetime-local" id="end_time" name="end_time">
-                                    <span id="endErrorMsg" class="text-danger"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Seats -->
-                        <div class="form-group">
-                            <label for="location">Total Seats</label>
-                            <input type="number" id="seats" name="seats" placeholder="Enter Total seats" min="1">
-                            <span id="seatsErrorMsg" class="text-danger"></span>
-                        </div>
-
-
-                        <!-- Location -->
-                        <div class="form-group">
-                            <label for="location">Location</label>
-                            <input type="text" id="location" name="location" placeholder="Enter event location">
-                            <span id="locationErrorMsg" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="form-group">
-                    <button type="button" onclick="getEventData()">Create Event</button>
-                </div>
-            </form>
+    <section class="my-eventat">
+        <div class="my-eventat-title pt-3">
+            <h1 class="" style="color: #000000; font-size: 40px; text-align: center;">My EventAt</h1>
         </div>
     </section>
 
 
+    <section class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="create-tab"
+                data-bs-toggle="tab" data-bs-target="#create-tab-pane" type="button" role="tab" aria-controls="create-tab-pane" aria-selected="true">Create an Event</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="own-tab"
+                data-bs-toggle="tab" data-bs-target="#own-tab-pane" type="button" role="tab" aria-controls="own-tab-pane" aria-selected="true">Published Events</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="booked-tab" onclick="getMyBookedEvents()"
+                data-bs-toggle="tab" data-bs-target="#booked-tab-pane" type="button" role="tab" aria-controls="booked-tab-pane" aria-selected="false">Booked Events</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="create-tab-pane" role="tabpanel" aria-labelledby="create-tab" tabindex="0">
+
+                <!-- Form Section -->
+                <section class="form-section">
+                    <div class="form-container">
+                        <h2>Create an Event</h2>
+
+                        <div id="success"></div>
+
+                        <form id="newEventForm" method="POST" style="margin-top: 45px;">
+
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-6 me-5">
+                                    <!-- Title -->
+                                    <div class="form-group">
+                                        <label for="title">Event Title</label>
+                                        <input type="text" id="title" name="title" placeholder="Enter event title">
+                                        <span id="titleErrorMsg" class="text-danger"></span>
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea id="description" name="description" rows="4"
+                                            placeholder="Enter event description"></textarea>
+                                        <span id="descriptionErrorMsg" class="text-danger"></span>
+                                    </div>
+
+                                    <!-- Image Upload -->
+                                    <div class="form-group">
+                                        <label for="image">Upload Image</label>
+                                        <input type="file" id="image" name="image" accept="image/*">
+                                        <span id="imageErrorMsg" class="text-danger"></span>
+                                    </div>
+
+                                </div>
 
 
-    <section class="newspaper-section">
-        <div class="newspaper-container">
-            <div class="newspaper-box">
-                <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image" class="newspaper-img" />
-                <h2 class="newspaper-title">Charity Event 1</h2>
-                <p class="newspaper-description">
-                    Join us for a charity event to support a great cause. Enjoy fun activities and support the community.
-                </p>
-                <div class="event-icons">
-                    <span class="icon"><i class="fas fa-clock"></i> 10:00 AM</span>
-                    <span class="icon"><i class="fas fa-map-marker-alt"></i> AMMAN</span>
-                    <span class="icon click-counter"><i class="fa-solid fa-chair"></i> Seats: 0</span>
-                </div>
-                <button class="book-now-btn">Book Now</button>
+                                <div class="col-sm-12 col-lg-6 ms-5">
+                                    <!-- Categories Dropdown -->
+                                    <div class="form-group">
+                                        <label for="category">Category</label>
+                                        <select id="category" name="category">
+                                            <option value="">Select Category</option>
+                                            <option value="charity">Charity</option>
+                                            <option value="food">Food & Fitness</option>
+                                            <option value="cultural">Cultural Events</option>
+                                            <option value="corporate">Corporate Events</option>
+                                        </select>
+                                        <span id="categoryErrorMsg" class="text-danger"></span>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-lg-6">
+                                            <!-- Start Time -->
+                                            <div class="form-group">
+                                                <label for="start_time">Start Time</label>
+                                                <input type="datetime-local" id="start_time" name="start_time">
+                                                <span id="startErrorMsg" class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12 col-lg-6">
+                                            <!-- End Time -->
+                                            <div class="form-group">
+                                                <label for="end_time">End Time</label>
+                                                <input type="datetime-local" id="end_time" name="end_time">
+                                                <span id="endErrorMsg" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Seats -->
+                                    <div class="form-group">
+                                        <label for="location">Total Seats</label>
+                                        <input type="number" id="seats" name="seats" placeholder="Enter Total seats" min="1">
+                                        <span id="seatsErrorMsg" class="text-danger"></span>
+                                    </div>
+
+
+                                    <!-- Location -->
+                                    <div class="form-group">
+                                        <label for="location">Location</label>
+                                        <input type="text" id="location" name="location" placeholder="Enter event location">
+                                        <span id="locationErrorMsg" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="form-group">
+                                <button type="button" onclick="getEventData(event)">Create Event</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+            
+            <div class="tab-pane fade" id="own-tab-pane" role="tabpanel" aria-labelledby="own-tab" tabindex="0">
+
+
+                <section class="newspaper-section">
+                    <div class="newspaper-container">
+
+                    </div>
+                </section>
+
+                
+            </div>
+
+            <div class="tab-pane fade" id="booked-tab-pane" role="tabpanel" aria-labelledby="booked-tab" tabindex="0">
+
+
+                <section class="newspaper-section">
+                    <div class="newspaper-container">
+                    </div>
+                </section>
+
             </div>
         </div>
     </section>
@@ -249,43 +306,47 @@
 
     <footer id="footer">
         <!-- Footer Start -->
-      <div class="footer-area footer-padding">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 text-center mb-50">
-                    <div class="single-footer-caption">
-                        <div class="footer-tittle">
-                            <h4>Contact Info</h4>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <p>Address: Your address goes here, your demo address.</p>
-                                </li>
-                                <li><a href="tel:+888044338899">Phone: +8880 44338899</a></li>
-                                <li><a href="mailto:support@yourdomain.com">Email: support@yourdomain.com</a></li>
-                            </ul>
+        <div class="footer-area footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 text-center mb-50">
+                        <div class="single-footer-caption">
+                            <div class="footer-tittle">
+                                <h4>Contact Info</h4>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <p>Address: Your address goes here, your demo address.</p>
+                                    </li>
+                                    <li><a href="tel:+888044338899">Phone: +8880 44338899</a></li>
+                                    <li><a href="mailto:support@yourdomain.com">Email: support@yourdomain.com</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-    
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 text-center mb-50">
-                    <div class="single-footer-caption">
-                        <div class="footer-tittle">
-                            <h4>Need Support?</h4>
-                            <div class="footer-pera">
-                                <p>If you need assistance, please send us a message at our email.</p>
-                            </div>
-                            <div class="footer-form">
-                                <div id="mc_embed_signup">
-                                    <form target="_blank" action="mailto:support@yourdomain.com" method="get" class="subscribe_form relative mail_part">
-                                        <input type="email" name="email" id="support-email" placeholder="Your Email Address"
-                                               class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                               onblur="this.placeholder = ' Your Email Address '">
-                                        <div class="form-icon">
-                                            <button type="submit" name="submit" id="support-submit"
-                                                    class="email_icon newsletter-submit button-contactForm"><img src="assets/img/gallery/form.png" alt=""></button>
-                                        </div>
-                                        <div class="mt-10 info"></div>
-                                    </form>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 text-center mb-50">
+                        <div class="single-footer-caption">
+                            <div class="footer-tittle">
+                                <h4>Need Support?</h4>
+                                <div class="footer-pera">
+                                    <p>If you need assistance, please send us a message at our email.</p>
+                                </div>
+                                <div class="footer-form">
+                                    <div id="mc_embed_signup">
+                                        <form target="_blank" action="mailto:support@yourdomain.com" method="get"
+                                            class="subscribe_form relative mail_part">
+                                            <input type="email" name="email" id="support-email"
+                                                placeholder="Your Email Address" class="placeholder hide-on-focus"
+                                                onfocus="this.placeholder = ''"
+                                                onblur="this.placeholder = ' Your Email Address '">
+                                            <div class="form-icon">
+                                                <button type="submit" name="submit" id="support-submit"
+                                                    class="email_icon newsletter-submit button-contactForm"><img
+                                                        src="assets/img/gallery/form.png" alt=""></button>
+                                            </div>
+                                            <div class="mt-10 info"></div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -293,42 +354,49 @@
                 </div>
             </div>
         </div>
-    </div>
-    
 
-  
-            <!-- Footer Bottom Area -->
-            <div class="footer-bottom-area footer-bg">
-              <div class="container">
-                  <div class="footer-border">
-                       <div class="row d-flex justify-content-between align-items-center">
-                           <div class="col-xl-10 col-lg-8 ">
-                               <div class="footer-copy-right">
-                                   <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |<a href="#home" target="_blank"> EventAt</a> 
-    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                               </div>
-                           </div>
-                           <div class="col-xl-2 col-lg-4">
-                               <div class="footer-social f-right">
-                                  <a href="#"><i class="fab fa-twitter"></i></a>
-                                  <a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                  <a href="#"><i class="fas fa-globe"></i></a>
-                                  <a href="#"><i class="fab fa-behance"></i></a>
-                               </div>
-                           </div>
-                       </div>
-                  </div>
-              </div>
-          </div>
 
-          <!-- Footer End-->
-    </footer >
+
+        <!-- Footer Bottom Area -->
+        <div class="footer-bottom-area footer-bg">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-xl-10 col-lg-8 ">
+                            <div class="footer-copy-right">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved |<a
+                                        href="#home" target="_blank"> EventAt</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-4">
+                            <div class="footer-social f-right">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fas fa-globe"></i></a>
+                                <a href="#"><i class="fab fa-behance"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
 
 
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./Doc/js/book.js"></script>
-
     <script src="./assets/js/event/new-event.js"></script>
+    <script src="./assets/js/event/show-events.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
+
+</html>
