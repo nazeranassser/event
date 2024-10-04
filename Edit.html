@@ -111,7 +111,7 @@
     </style>
 </head>
 
-<body onload="getMyPublishedEvents()">
+<body>
     <header>
         <div class="header-area">
             <div class="main-header header-sticky">
@@ -169,7 +169,7 @@
                 data-bs-toggle="tab" data-bs-target="#create-tab-pane" type="button" role="tab" aria-controls="create-tab-pane" aria-selected="true">Create an Event</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="own-tab"
+                <button class="nav-link" id="own-tab" onclick="getMyPublishedEvents()"
                 data-bs-toggle="tab" data-bs-target="#own-tab-pane" type="button" role="tab" aria-controls="own-tab-pane" aria-selected="true">Published Events</button>
             </li>
             <li class="nav-item" role="presentation">
@@ -280,14 +280,12 @@
             
             <div class="tab-pane fade" id="own-tab-pane" role="tabpanel" aria-labelledby="own-tab" tabindex="0">
 
-
                 <section class="newspaper-section">
                     <div class="newspaper-container">
 
                     </div>
                 </section>
 
-                
             </div>
 
             <div class="tab-pane fade" id="booked-tab-pane" role="tabpanel" aria-labelledby="booked-tab" tabindex="0">

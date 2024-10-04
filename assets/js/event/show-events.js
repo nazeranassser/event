@@ -74,15 +74,13 @@ function showEvents(events, container){
       <p class="newspaper-description">${event.description}</p>
       <div class="event-icons d-flex flex-wrap">
           <span class="icon p-1"><i class="fas fa-clock p-1"></i>${event.startTime}</span>
-          <span class="icon p-1"><i class="fas fa-map-marker-alt p-1"></i> AMMAN</span>
-          <span class="icon p-1 click-counter"><i class="fa-solid fa-chair p-1"></i> Seats: 0</span>
+          <span class="icon p-1"><i class="fas fa-map-marker-alt p-1"></i>${event.location}</span>
+          <span class="icon p-1 click-counter"><i class="fa-solid fa-chair p-1"></i> Seats: ${event.attendees.length} /${event.totalSeats}</span>
       </div>
     `
 
 
-    eventContainer.appendChild(
-      node
-    )
+    eventContainer.appendChild(node)
   }
 
 }

@@ -32,7 +32,9 @@ function validation(form, start, end){
     formStatus = false
   }
   else if (isImg(form.image.value)){
+    console.log("before change img name")
     const image = changeImgName(form.image.value)
+    console.log("after change img name")
   }
   else {
     document.querySelector("#imageErrorMsg").innerHTML = "use valid img extension"
