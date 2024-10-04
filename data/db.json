@@ -58,7 +58,10 @@
       "email": "mousa.alaaldin2000@gmail.com",
       "publishedEvents": [],
       "password": "123456789Mm",
-      "registeredEvents": []
+      "registeredEvents": [
+        2,
+        3
+      ]
     },
     {
       "id": "7",
@@ -119,9 +122,10 @@
       "location": "Online",
       "organizer": 2,
       "totalSeats": 50,
-      "bookedSeats": 45,
+      "bookedSeats": 46,
       "attendees": [
-        1
+        1,
+        6
       ]
     },
     {
@@ -135,9 +139,10 @@
       "location": "Dead Sea, Jordan",
       "organizer": 1,
       "totalSeats": 500,
-      "bookedSeats": 459,
+      "bookedSeats": 460,
       "attendees": [
-        2
+        2,
+        6
       ]
     },
     {
