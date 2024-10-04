@@ -26,7 +26,7 @@ async function getMyPublishedEvents(){
     })
     
     
-    showEvents(published, "#own-tab-pane .newspaper-section .newspaper-container")
+    showEvents(published, "#own-tab-pane .newspaper-section .newspaper-container", true)
 
   } catch (error) {
     console.log(error)
@@ -59,28 +59,63 @@ async function getMyBookedEvents(){
 
 
 
-function showEvents(events, container){
+async function showEvents(events, container, own){
 
   const eventContainer = document.querySelector(container)
   eventContainer.innerHTML = ""
+
+  let count = 1;
   for (const event of events) {
     let node = document.createElement("div")
     node.setAttribute("class", "newspaper-box")
 
     node.innerHTML = `
-      <img src="assets/img/events/${event.image}" alt="Event Image"
-          class="newspaper-img" />
-      <h2 class="newspaper-title">${event.title}</h2>
-      <p class="newspaper-description">${event.description}</p>
-      <div class="event-icons d-flex flex-wrap">
-          <span class="icon p-1"><i class="fas fa-clock p-1"></i>${event.startTime}</span>
-          <span class="icon p-1"><i class="fas fa-map-marker-alt p-1"></i>${event.location}</span>
-          <span class="icon p-1 click-counter"><i class="fa-solid fa-chair p-1"></i> Seats: ${event.attendees.length} /${event.totalSeats}</span>
-      </div>
+        <div>
+          <img src="assets/img/events/${event.image}" alt="Event Image"
+              class="newspaper-img" />
+          <h2 class="newspaper-title">${event.title}</h2>
+          <p class="newspaper-description">${event.description}</p>
+          <div class="event-icons d-flex flex-wrap">
+              <span class="icon p-1"><i class="fas fa-clock p-1"></i>${event.startTime}</span>
+              <span class="icon p-1"><i class="fas fa-map-marker-alt p-1"></i>${event.location}</span>
+              <span class="icon p-1 click-counter"><i class="fa-solid fa-chair p-1"></i> Seats: ${event.attendees.length} /${event.totalSeats}</span>
+          </div>
+        </div>
     `
 
-
+    let deleteBtn = ""
+    if(own){
+      deleteBtn = document.createElement("div")
+      deleteBtn.innerHTML = `
+          <div id="deleteBtn${count}" onclick="deleteEvent(${event.id})" class="p-2 mt-2 text-center"
+          style="width:100%; background-color:red; border-radius: 4px; color: #fff; cursor: pointer;">Delete</div>
+      `
+    }
+    
+    node.appendChild(deleteBtn)
     eventContainer.appendChild(node)
+    document
+    .querySelector("#deleteBtn"+count)
+    .onclick = function(){
+      console.log("deleteEvent : " + event.id)
+
+      try {
+        if(confirm("Are you sure to delete this event ?")){
+          fetch('http://localhost:3000/events/'+event.id, {
+            method: 'DELETE',
+          })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    count++
   }
 
+}
+
+
+function deleteEvent(eventID){
+  console.log("deleteEvent : " + eventID)
 }
