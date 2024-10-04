@@ -91,11 +91,7 @@
       "password": "Shadi123!",
       "publishedEvents": [],
       "registeredEvents": [
-        1,
-        2,
-        5,
-        3,
-        4
+        1
       ]
     }
   ],
@@ -111,7 +107,7 @@
       "location": "Amman, Jordan",
       "organizer": 1,
       "totalSeats": 100,
-      "bookedSeats": 69,
+      "bookedSeats": 77,
       "attendees": [
         10
       ]
@@ -129,8 +125,7 @@
       "totalSeats": 50,
       "bookedSeats": 45,
       "attendees": [
-        1,
-        10
+        1
       ]
     },
     {

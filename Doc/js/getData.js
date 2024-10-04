@@ -1,6 +1,14 @@
 let isLogged = Boolean(localStorage.getItem('isLoggedIn'));
 // console.log(`logged: ${isLogged}`);
-
+function deleteElement(arr, value){ // return a new array without all elements with a specific value
+    let newArray = []; 
+    for(let i = 0; i<arr.length; i++){
+        if(arr[i] != value){
+            newArray.push(arr[i]);
+        }
+    }
+    return newArray;
+}
 async function getUser(id) {
     try {
         const url = `http://localhost:3000/users/${id}`;
@@ -155,6 +163,40 @@ async function bookSeat(userId, eventId) {
     }
 }
 
+async function UnBookSeat(userId, eventId){
+    if(isLogged == true){
+        //to check if the user is already book the event or nit
+       let user = await getUser(userId);
+       let userRegisteredEvents = user.registeredEvents;
+       let event = await getEvent(eventId);
+       let eventAttendees = event.attendees;
+       let eventBookedSeats = Number(event.bookedSeats);
+       if(userRegisteredEvents.includes(eventId) == false && eventAttendees.includes(userId) == false){
+           isBooked = false;
+       }else{
+           isBooked = true;
+       }
+       if(isBooked == true){
+           let newUserRegisteredEvents = deleteElement(userRegisteredEvents, Number(eventId) )
+           let updatedDataUser = {"registeredEvents": newUserRegisteredEvents};
+           updateUser(userId, updatedDataUser);
+           let newEventAttendees = deleteElement(eventAttendees, Number(userId))
+           console.log("eventBookedSeats before: " + eventBookedSeats);
+           eventBookedSeats = eventBookedSeats - 1;
+           console.log("eventBookedSeats after: " + eventBookedSeats);
+           let updatedDataEvent = {
+               "attendees": newEventAttendees,
+               "bookedSeats": eventBookedSeats
+           };
+           updateEvent(eventId, updatedDataEvent);
+       }else{
+          console.log("Already Unbooked");
+       }
+   }else{
+       console.log("please login first")
+   }
+}
+
 async function viewEvents(){
     let events = await getAllEvents();
     // console.log(events);
@@ -174,9 +216,9 @@ async function viewEvents(){
         // console.log(userId +' '+ events[i].id);
         // console.log(isBooked);
         if(isBooked == true){
-            bookBtn = `<button class="booked-btn book-now-btn" >Booked</button>`;
+            bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}',${events[i].id})">UnBook</button>`;
         }else{
-            bookBtn = `<button class="book-now-btn"  onclick="bookSeat('${userId}',${events[i].id})">Book</button>`;
+            bookBtn = `<button class="book-now-btn" onclick="bookSeat('${userId}',${events[i].id})">Book</button>`;
         }
         newHTML +=
         `<div class="newspaper-box">
@@ -200,11 +242,14 @@ async function viewEvents(){
 //////////// test area
 
 
-(async () => {
-    console.log(await bookedOrNot(10,1))
-    // await viewEvents();
-    document.getElementsByClassName("booked-btn").style.backgroundColor = 'green';
-  })()
+// (async () => {
+//     console.log(await bookedOrNot(10,1))
+//     // await viewEvents();
+//     document.getElementsByClassName("booked-btn").style.backgroundColor = 'green';
+//   })()
+
+
+
   
 
 
