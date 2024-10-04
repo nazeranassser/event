@@ -52,7 +52,7 @@ async function getAllEvents() {
         console.error(error.message);
     }
 }
-async function getFilteredEvents(filter) {
+async function getFilteredEvents(filterValue) {
     try {
         const url = `http://localhost:3000/events`;
         const response = await fetch(url);
@@ -63,7 +63,7 @@ async function getFilteredEvents(filter) {
         const events = await response.json();
         let filteredEvents = [];
         for(let i = 0; i < events.length; i++){ //filter the events by 
-            if(events[i].category == filter){
+            if(events[i].category == filterValue){
                 filteredEvents.push(events[i])
             }
         }
