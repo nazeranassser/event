@@ -17,6 +17,7 @@ function validation(form, start, end){
 
   let formStatus = true
 
+
   if(form.title.value == ""){
     document.querySelector("#titleErrorMsg").innerHTML = "title field is required"
     formStatus = false
@@ -27,18 +28,18 @@ function validation(form, start, end){
     formStatus = false
   }
 
-  if(form.image.value == ""){
-    document.querySelector("#imageErrorMsg").innerHTML = "image field is required"
-    formStatus = false
-  }
-  else if (isImg(form.image.value)){
-    var image = changeImgName(form.image.value)
-  }
-  else{
-    var image = changeImgName(form.image.value)
-    document.querySelector("#imageErrorMsg").innerHTML = "use valid img extension"
-    formStatus = false
-  }
+  // if(form.image.value == ""){
+  //   document.querySelector("#imageErrorMsg").innerHTML = "image field is required"
+  //   formStatus = false
+  // }
+  // else if (isImg(form.image.value)){
+  //   var image = changeImgName(form.image.value)
+  // }
+  // else{
+  //   var image = changeImgName(form.image.value)
+  //   document.querySelector("#imageErrorMsg").innerHTML = "use valid img extension"
+  //   formStatus = false
+  // }
 
   if(form.category.value == ""){
     document.querySelector("#categoryErrorMsg").innerHTML = "category field is required"
@@ -55,6 +56,15 @@ function validation(form, start, end){
     formStatus = false
   }
 
+  if (!checkValidDate(start)){
+    document.querySelector("#startErrorMsg").innerHTML = "The starting date must be equal to today at least."
+    formStatus = false
+  }
+  else if (!checkCorrectDate(start, end)){
+    document.querySelector("#startErrorMsg").innerHTML = "The starting date must be before the ending date."
+    formStatus = false
+  }
+
   if(form.seats.value == ""){
     document.querySelector("#seatsErrorMsg").innerHTML = "Total seats field is required"
     formStatus = false
@@ -64,10 +74,6 @@ function validation(form, start, end){
     document.querySelector("#locationErrorMsg").innerHTML = "Location field is required"
     formStatus = false
   }
-
-
-  console.log(form.image.value)
-
 
   if(formStatus){
     addEvent(form, start, end, image)
@@ -97,7 +103,7 @@ async function addEvent(form, start, end, img) {
     body: JSON.stringify({
       "title": form.title.value,
       "description": form.description.value,
-      "image": img,
+      "image": "",
       "category": form.category.value,
       "startTime": start,
       "endTime": end,
@@ -144,4 +150,27 @@ function changeImgName(image){
   console.log(img)
 
   return img
+}
+
+
+
+function checkValidDate(date){
+  const selectedDate = new Date(date);
+  const currentDate = new Date();
+
+  if(selectedDate < currentDate)
+    return false
+  else
+    return true
+}
+
+
+function checkCorrectDate(startDate, endDate){
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  if(startDate > endDate)
+    return false
+  else
+    return true
 }
