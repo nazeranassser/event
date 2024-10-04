@@ -105,7 +105,7 @@ async function addEvent(form, start, end, img) {
     body: JSON.stringify({
       "title": form.title.value,
       "description": form.description.value,
-      "image": "",
+      "image": img,
       "category": form.category.value,
       "startTime": start,
       "endTime": end,
