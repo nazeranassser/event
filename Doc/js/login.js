@@ -109,14 +109,11 @@ async function registerUser(event) {
 
 
 registerButton.addEventListener("click", registerUser);
-
 async function loginUser(event) {
     event.preventDefault(); 
 
-  
     loginSubmit.disabled = true; 
 
-  
     if (loginEmail.value === "" || loginPassword.value === "") {
         alert("Both fields are required!");
         loginSubmit.disabled = false;
@@ -135,16 +132,17 @@ async function loginUser(event) {
         const data = await response.json();
 
         const validUser = data.find(user => user.email === loginEmail.value && user.password === loginPassword.value);
-        const userInfo = data.findIndex(user => user.email === loginEmail.value );
+        const userInfoIndex = data.findIndex(user => user.email === loginEmail.value );
 
         if (validUser) {
-            // alert(userInfo
-            // )
-            // console.log('##########################');
-            
             localStorage.setItem("isLoggedIn", "true"); 
-            // localStorage.setItem("userInfo", JSON.stringify(data[userInfo]));
-            alert("Welcome, " +  data[userInfo].username + "!");
+
+            localStorage.setItem("userInfo", JSON.stringify(data[userInfoIndex]));
+
+        
+            alert("Welcome, " + data[userInfoIndex].username + "!");
+            
+          
             window.location.href = "index.html";  
             
         } else {
@@ -155,14 +153,11 @@ async function loginUser(event) {
         console.error("Error fetching users:", error);
         alert("There was a problem with the login. Please try again.");
     } finally {
-      
         loginSubmit.disabled = false;
     }
 
-   
     loginEmail.value = "";
     loginPassword.value = "";
 }
-
 
 loginSubmit.addEventListener("click", loginUser);

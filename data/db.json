@@ -59,8 +59,10 @@
       "publishedEvents": [],
       "password": "123456789Mm",
       "registeredEvents": [
-        2,
-        3
+        5,
+        4,
+        3,
+        2
       ]
     },
     {
@@ -147,8 +149,8 @@
       "bookedSeats": 461,
       "attendees": [
         2,
-        6,
-        10
+        10,
+        6
       ]
     },
     {
@@ -162,8 +164,10 @@
       "location": "Deleniti autem ipsam",
       "organizer": "8646",
       "totalSeats": 100,
-      "bookedSeats": 1,
-      "attendees": []
+      "bookedSeats": 2,
+      "attendees": [
+        6
+      ]
     },
     {
       "id": "5",
@@ -176,8 +180,10 @@
       "location": "Sapiente iste fugiat",
       "organizer": "8646",
       "totalSeats": 100,
-      "bookedSeats": 2,
-      "attendees": []
+      "bookedSeats": 3,
+      "attendees": [
+        6
+      ]
     },
     {
       "id": "985c",
