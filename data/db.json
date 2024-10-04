@@ -299,6 +299,20 @@
       "totalSeats": 67,
       "bookedSeats": 0,
       "attendees": []
+    },
+    {
+      "id": "573b",
+      "title": "dsasddsadefsdadf",
+      "description": "aeaeafmdksmaldsds",
+      "image": "",
+      "category": "food",
+      "startTime": "2024-10-05T17:29",
+      "endTime": "2024-10-18T17:29",
+      "location": "gjygyhj",
+      "organizer": "6",
+      "totalSeats": 887,
+      "bookedSeats": 0,
+      "attendees": []
     }
   ]
 }
