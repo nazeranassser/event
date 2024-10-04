@@ -399,8 +399,8 @@ hr {
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-size: 16px;
-  border-radius: 0px;
+  font-size: 14px;
+  border-radius: 30px;
   -moz-user-select: none;
   font-weight: 400;
   letter-spacing: 1px;
@@ -2561,7 +2561,7 @@ hr {
   font-weight: 400;
   padding: 39px 27px;
   display: block;
-  font-size: 16px;
+  font-size: 18px;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
   -ms-transition: all 0.3s ease-out 0s;
@@ -6898,4 +6898,7 @@ del {
     text-decoration: none;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     font-weight: bold;
+}
+.sign-btn{
+  color: black
 }

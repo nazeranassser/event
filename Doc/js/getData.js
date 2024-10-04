@@ -213,33 +213,42 @@ async function UnBookSeat(userId, eventId){
    }
 }
 async function viewEvents(filter){
-    let events
+    let events;
     if(filter){
         events = await getFilteredEvents(filter);
     }else{
         events = await getAllEvents();
     }
-    // console.log(events);
     let box = document.getElementById("events-box");
     let newHTML = '';
     let bookBtn, isBooked;
     let timeArray, date,  time;
-    let userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    let userId = userInfo.id;
-    // console.log(userId);
+    let userInfo, userId;
+    if(localStorage.getItem('isLoggedIn') == 'true'){
+        userInfo = JSON.parse(localStorage.getItem('userInfo'));//
+        userId = userInfo.id; //
+    }
+
+    
     for(let i = 0; i < events.length; i++){
         //extract time and date from date string
         timeArray = events[i].startTime.split('T');
         date = timeArray[0];
         time = timeArray[1];
-        isBooked = await bookedOrNot(Number(userId), Number(events[i].id));
+        
         // console.log(userId +' '+ events[i].id);
         // console.log(isBooked);
-        if(isBooked == true){
-            bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}',${events[i].id})">UnBook</button>`;
+        if(localStorage.getItem('isLoggedIn') == 'true'){
+            isBooked = await bookedOrNot(Number(userId), Number(events[i].id));//
+            if(isBooked == true){ //
+                bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}',${events[i].id})">UnBook</button>`; //
+            }else{////
+                bookBtn = `<button class="book-now-btn" onclick="bookSeat('${userId}',${events[i].id})">Book</button>`;//
+            } //
         }else{
-            bookBtn = `<button class="book-now-btn" onclick="bookSeat('${userId}',${events[i].id})">Book</button>`;
+            bookBtn = `<a href="login.html" class="btn card-btn">Book Now!</a>`;//
         }
+        
         newHTML +=
         `<div class="newspaper-box">
                 <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image" class="newspaper-img" />
@@ -266,14 +275,17 @@ document.getElementById("food-filter-btn").onclick = function() { viewEvents('fo
 document.getElementById("cultural-filter-btn").onclick = function() { viewEvents('cultural')};
 document.getElementById("sport-filter-btn").onclick = function() { viewEvents('sport')};
 document.getElementById("games-filter-btn").onclick = function() { viewEvents('games')};
+// document.getElementById("body").onload = function() {viewEvents()};
+
+
 
 
 //////////////
 //////////// testing area
 // getAllEvents()
-(async () => {
-    console.log(await getFilteredEvents('Entertainment'))
-  })()
+// (async () => {
+//     console.log(await getFilteredEvents('Entertainment'))
+//   })()
 
 
 ///////////////////

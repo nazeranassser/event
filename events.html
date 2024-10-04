@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="assets/css/hr-line1.css" />
     <link rel="stylesheet" href="assets/css/event-card.css" />
   </head>
-  <body onload="viewEvents()">
+  <body>
     <!-- Preloader Start -->
     <div id="preloader-active">
       <div class="preloader d-flex align-items-center justify-content-center">
@@ -132,7 +132,7 @@
 
     <main>
       <!-- Hero Start -->
-      <section class="contact" id="">
+      <section class="contact" onload = "viewEvens()">
         <section class="home">
           <div class="home-content">
             <h1 class="" style="color: #000000; font-size: 40px">
@@ -384,4 +384,7 @@
     <script src="./Doc/js/getData.js"></script>
     <script src="./Doc/js/signup.js" ></script>
   </body>
+  <script>
+    window.addEventListener("load", function(){ viewEvents() });
+  </script>
 </html>
