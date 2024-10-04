@@ -299,6 +299,34 @@
       "totalSeats": 67,
       "bookedSeats": 0,
       "attendees": []
+    },
+    {
+      "id": "ad82",
+      "title": "Cum voluptatum conse",
+      "description": "Ea deleniti quia qui",
+      "image": "",
+      "category": "charity",
+      "startTime": "2024-10-11T23:14",
+      "endTime": "2024-10-29T01:47",
+      "location": "Aperiam non fugit q",
+      "organizer": "9",
+      "totalSeats": 4,
+      "bookedSeats": 0,
+      "attendees": []
+    },
+    {
+      "id": "0748",
+      "title": "Hic quo laborum eu d",
+      "description": "Culpa quam rerum qu",
+      "image": "blog-bg.jpeg",
+      "category": "corporate",
+      "startTime": "2024-10-18T04:49",
+      "endTime": "2024-10-31T01:51",
+      "location": "Suscipit minima mole",
+      "organizer": "9",
+      "totalSeats": 65,
+      "bookedSeats": 0,
+      "attendees": []
     }
   ]
 }

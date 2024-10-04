@@ -35,24 +35,32 @@
             padding: 0;
         }
 
-        section.container{
+        header {
+            background-color: #fff;
+        }
+
+        section.container {
             padding-top: 40px;
         }
+
         .container h2 {
             padding-top: 30px;
             padding-bottom: 30px;
         }
 
-        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link  {
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link {
             background-color: #fff;
             color: #1e036d;
         }
 
-        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link:hover  {
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link:hover {
             cursor: pointer;
         }
 
-        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active  {
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link.active {
             background-color: #1e036d;
             color: #fff;
         }
@@ -112,113 +120,67 @@
 </head>
 
 <body>
-    <!-- <header>
+    <header>
+        <!--? Header Start -->
         <div class="header-area">
             <div class="main-header header-sticky">
                 <div class="container-fluid">
                     <div class="row align-items-center">
+                        <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="index.html"><img style="height: 30px;"
-                                        src="https://www.eventat.com/assets/img/logo-b.png" alt="" /></a>
+                                <a href="index.html"><img style="height: 50px;" src="/assets/img/logo/logo.png"
+                                        alt="" /></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
                             <div class="menu-main d-flex align-items-center justify-content-end">
-                                <div class="main-menu f-right d-none d-lg-block">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                          <li><a href="index.html">Home</a></li>
-                                          <li><a href="charity.html">Events</a> </li>
-                                          <li><a href="Edit.html">My EventAt!</a></li>
-                                          <li><a href="about.html">About Us!</a></li>
-                                          <li><a href="#footer">Contact Us!</a></li>
+
+
+                                            <li><a href="index.html">Home</a></li>
+                                            <li>
+                                                <a href="events.html">Events</a>
+
+                                            </li>
+                                            <li><a href="Edit.html">My EventAt!</a></li>
+
+                                            <li><a href="about.html">About Us!</a></li>
+                                            <li><a href="#footer">Contact Us!</a></li>
+
+
                                         </ul>
-                                      </nav>
+                                    </nav>
                                 </div>
+                                <div id="alertContainer"></div>
+                                <!-- <button class="book-now-btn" id="logoutBtn">Logout</button> -->
+                                <!-- <div id="alertContainer"></div> -->
+
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30 ">
-                                    <a href="index.html" class="btn" id="logoutBtn" style="border-radius: 50px; background-color: #1e036d;" >Logout</a>
-                                    </div>
-                                    <div class="header-right-btn f-right d-none d-lg-block ml-30 ">
-                                      <a href="login.html" class="btn " id="BookNow" style="border-radius: 50px; background-color: #1e036d;" >Book Now!</a>
-                                    </div>
+                                    <a href="index.html" class="btn" id="logoutBtn"
+                                        style="border-radius: 50px; background-color: #1e036d;">Logout</a>
+                                </div>
+                                <!-- <div class="header-right-btn f-right d-none d-lg-block ml-30 ">
+                                    <a href="login.html" class="btn " id="BookNow"
+                                        style="border-radius: 50px; background-color: #1e036d;">Book Now!</a>
+                                </div> -->
                             </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header> -->
-    <header >
-        <!--? Header Start -->
-        <div class="header-area">
-          <div class="main-header header-sticky">
-            <div class="container-fluid">
-              <div class="row align-items-center">
-                <!-- Logo -->
-                <div class="col-xl-2 col-lg-2 col-md-1">
-                  <div class="logo">
-                    <a href="index.html"><img style="height: 50px;" src="/assets/img/logo/logo.png" alt="" /></a>
-                  </div>
-                </div>
-                <div class="col-xl-10 col-lg-10 col-md-10">
-                  <div
-                    class="menu-main d-flex align-items-center justify-content-end"
-                  >
-                    <!-- Main-menu -->
-                    <div class="main-menu f-right d-lg-block">
-                        <nav>
-                            <ul id="navigation">
-                              <li><a href="index.html">Home</a></li>
-                              <li>
-                                <div class="dropdown submenu">
-                                  <button class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Categories
-                                  </button>
-                                  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <button class="dropdown-item" type="button" id="all-filter-btn">All Events</button>
-                                    <button class="dropdown-item" type="button" id="charity-filter-btn">Charity</button>
-                                    <button class="dropdown-item" type="button" id="technology-filter-btn">Technology</button>
-                                    <button class="dropdown-item" type="button" id="business-filter-btn">Business</button>
-                                    <button class="dropdown-item" type="button" id="food-filter-btn">Food</button>
-                                    <button class="dropdown-item" type="button" id="cultural-filter-btn">Cultural</button>
-                                    <button class="dropdown-item" type="button" id="sport-filter-btn">Sport</button>
-                                    <button class="dropdown-item" type="button" id="games-filter-btn">Games</button>
-                                    
-                                  </div>
-                                </div>
-                              </li>
-                              <li><a href="Edit.html">My EventAt!</a></li>
-                              <li><a href="about.html">About Us!</a></li>
-                              <li><a href="#footer">Contact Us!</a></li>
-                            </ul>
-                        </nav>
-              </div>
-              <div id="alertContainer"></div>
-              <!-- <button class="book-now-btn" id="logoutBtn">Logout</button> -->
-              <!-- <div id="alertContainer"></div> -->
-  
-              <div class="header-right-btn f-right d-none d-lg-block ml-30 ">
-              <a href="index.html" class="btn" id="logoutBtn" style="border-radius: 50px; background-color: #1e036d;" >Logout</a>
-              </div>
-              <div class="header-right-btn f-right d-none d-lg-block ml-30 ">
-                <a href="login.html" class="btn " id="BookNow" style="border-radius: 50px; background-color: #1e036d;" >Book Now!</a>
-              </div>
-            </div>
-          </div>
-          <!-- Mobile Menu -->
-          <div class="col-12">
-            <div class="mobile_menu d-block d-lg-none"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  
+
+
         <!-- Header End -->
     </header>
-
 
     <section class="my-eventat">
         <div class="my-eventat-title pt-3">
@@ -230,20 +192,24 @@
     <section class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="create-tab"
-                data-bs-toggle="tab" data-bs-target="#create-tab-pane" type="button" role="tab" aria-controls="create-tab-pane" aria-selected="true">Create an Event</button>
+                <button class="nav-link active" id="create-tab" data-bs-toggle="tab" data-bs-target="#create-tab-pane"
+                    type="button" role="tab" aria-controls="create-tab-pane" aria-selected="true">Create an
+                    Event</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="own-tab" onclick="getMyPublishedEvents()"
-                data-bs-toggle="tab" data-bs-target="#own-tab-pane" type="button" role="tab" aria-controls="own-tab-pane" aria-selected="true">Published Events</button>
+                <button class="nav-link" id="own-tab" onclick="getMyPublishedEvents()" data-bs-toggle="tab"
+                    data-bs-target="#own-tab-pane" type="button" role="tab" aria-controls="own-tab-pane"
+                    aria-selected="true">Published Events</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="booked-tab" onclick="getMyBookedEvents()"
-                data-bs-toggle="tab" data-bs-target="#booked-tab-pane" type="button" role="tab" aria-controls="booked-tab-pane" aria-selected="false">Booked Events</button>
+                <button class="nav-link" id="booked-tab" onclick="getMyBookedEvents()" data-bs-toggle="tab"
+                    data-bs-target="#booked-tab-pane" type="button" role="tab" aria-controls="booked-tab-pane"
+                    aria-selected="false">Booked Events</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="create-tab-pane" role="tabpanel" aria-labelledby="create-tab" tabindex="0">
+            <div class="tab-pane fade show active" id="create-tab-pane" role="tabpanel" aria-labelledby="create-tab"
+                tabindex="0">
 
                 <!-- Form Section -->
                 <section class="form-section">
@@ -319,7 +285,8 @@
                                     <!-- Seats -->
                                     <div class="form-group">
                                         <label for="location">Total Seats</label>
-                                        <input type="number" id="seats" name="seats" placeholder="Enter Total seats" min="1">
+                                        <input type="number" id="seats" name="seats" placeholder="Enter Total seats"
+                                            min="1">
                                         <span id="seatsErrorMsg" class="text-danger"></span>
                                     </div>
 
@@ -327,7 +294,8 @@
                                     <!-- Location -->
                                     <div class="form-group">
                                         <label for="location">Location</label>
-                                        <input type="text" id="location" name="location" placeholder="Enter event location">
+                                        <input type="text" id="location" name="location"
+                                            placeholder="Enter event location">
                                         <span id="locationErrorMsg" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -342,7 +310,7 @@
                 </section>
 
             </div>
-            
+
             <div class="tab-pane fade" id="own-tab-pane" role="tabpanel" aria-labelledby="own-tab" tabindex="0">
 
                 <section class="newspaper-section">
@@ -456,11 +424,16 @@
     <script src="./Doc/js/book.js"></script>
     <script src="./assets/js/event/new-event.js"></script>
     <script src="./assets/js/event/show-events.js"></script>
-    <script src="Doc/js/signup.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
