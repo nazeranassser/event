@@ -9,7 +9,6 @@ function deleteElement(arr, value){ // return a new array without all elements w
     }
     return newArray;
 }
-
 async function getUser(id) {
     try {
         const url = `http://localhost:3000/users/${id}`;
@@ -39,8 +38,7 @@ async function getAllUsers() {
     } catch (error) {  
         console.error(error.message);
     }
-}
-async function getAllEvents() {
+}async function getAllEvents() {
     try {
         const url = `http://localhost:3000/events`;
         const response = await fetch(url);
@@ -80,7 +78,6 @@ function compareDates(biggerDate, smallerDate) {
     // Check if the first date is greater than or equal to the second one
     return date1 >= date2;
 }
-
 async function timeFilter(startDate, endDate) {
     try {
         const url = `http://localhost:3000/events`;
@@ -110,9 +107,6 @@ async function timeFilter(startDate, endDate) {
         console.error(error.message);
     }
 }
-
-
-
 async function getEvent(id) {
     try {
         const url = `http://localhost:3000/events`;
@@ -200,69 +194,75 @@ async function checkAvailableSeats(eventId) {
     return availableSeats;
 }
 async function bookSeat(userId, eventId) {
-    if(isLogged == true){
-         //to check if the user is already book the event or nit
+    let text = "Are you sure you want to book a seat at this event?";
+    if (confirm(text) == true) {
+        if(isLogged == true){
+            //to check if the user is already book the event or nit
+           let user = await getUser(userId);
+           let userRegisteredEvents = user.registeredEvents;
+           let event = await getEvent(eventId);
+           let eventAttendees = event.attendees;
+           let eventBookedSeats = event.bookedSeats;
+           if(userRegisteredEvents.includes(eventId) == false && eventAttendees.includes(userId) == false){
+               isBooked = false;
+           }else{
+               isBooked = true;
+           }
+           if(!isBooked){
+               userRegisteredEvents.push(eventId);
+               let updatedDataUser = {"registeredEvents": userRegisteredEvents};
+               updateUser(userId, updatedDataUser);
+               eventAttendees.push(userId);
+               eventBookedSeats += 1;
+               // console.log(eventAttendees);
+               let updatedDataEvent = {
+                   "attendees": eventAttendees,
+                   "bookedSeats": eventBookedSeats
+               };
+               updateEvent(eventId, updatedDataEvent);
+           }else{
+              console.log("Already booked");
+           }
+       }else{
+           console.log("please login first")
+       }
+    }    
+}
+async function UnBookSeat(userId, eventId){
+    let text = "Are you sure you don't want to book a seat at this event?";
+    if (confirm(text) == true) {
+        if(isLogged == true){
+            //to check if the user is already book the event or nit
         let user = await getUser(userId);
         let userRegisteredEvents = user.registeredEvents;
         let event = await getEvent(eventId);
         let eventAttendees = event.attendees;
-        let eventBookedSeats = event.bookedSeats;
+        let eventBookedSeats = Number(event.bookedSeats);
         if(userRegisteredEvents.includes(eventId) == false && eventAttendees.includes(userId) == false){
             isBooked = false;
         }else{
             isBooked = true;
         }
-        if(!isBooked){
-            userRegisteredEvents.push(eventId);
-            let updatedDataUser = {"registeredEvents": userRegisteredEvents};
+        if(isBooked == true){
+            let newUserRegisteredEvents = deleteElement(userRegisteredEvents, eventId )
+            let updatedDataUser = {"registeredEvents": newUserRegisteredEvents};
             updateUser(userId, updatedDataUser);
-            eventAttendees.push(userId);
-            eventBookedSeats += 1;
-            // console.log(eventAttendees);
+            let newEventAttendees = deleteElement(eventAttendees, userId)
+            console.log("eventBookedSeats before: " + eventBookedSeats);
+            eventBookedSeats = eventBookedSeats - 1;
+            console.log("eventBookedSeats after: " + eventBookedSeats);
             let updatedDataEvent = {
-                "attendees": eventAttendees,
+                "attendees": newEventAttendees,
                 "bookedSeats": eventBookedSeats
             };
             updateEvent(eventId, updatedDataEvent);
         }else{
-           console.log("Already booked");
+            console.log("Already Unbooked");
         }
     }else{
         console.log("please login first")
     }
-}
-async function UnBookSeat(userId, eventId){
-    if(isLogged == true){
-        //to check if the user is already book the event or nit
-       let user = await getUser(userId);
-       let userRegisteredEvents = user.registeredEvents;
-       let event = await getEvent(eventId);
-       let eventAttendees = event.attendees;
-       let eventBookedSeats = Number(event.bookedSeats);
-       if(userRegisteredEvents.includes(eventId) == false && eventAttendees.includes(userId) == false){
-           isBooked = false;
-       }else{
-           isBooked = true;
-       }
-       if(isBooked == true){
-           let newUserRegisteredEvents = deleteElement(userRegisteredEvents, eventId )
-           let updatedDataUser = {"registeredEvents": newUserRegisteredEvents};
-           updateUser(userId, updatedDataUser);
-           let newEventAttendees = deleteElement(eventAttendees, userId)
-           console.log("eventBookedSeats before: " + eventBookedSeats);
-           eventBookedSeats = eventBookedSeats - 1;
-           console.log("eventBookedSeats after: " + eventBookedSeats);
-           let updatedDataEvent = {
-               "attendees": newEventAttendees,
-               "bookedSeats": eventBookedSeats
-           };
-           updateEvent(eventId, updatedDataEvent);
-       }else{
-          console.log("Already Unbooked");
-       }
-   }else{
-       console.log("please login first")
-   }
+    }
 }
 async function viewEvents(filter, filterDate) {
     let events;
@@ -308,7 +308,7 @@ async function viewEvents(filter, filterDate) {
                 if (isBooked == true) { // if there are available seets and the user have booked a seet
                     bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
                 } else {    // if there are available seets and the user DID NOT booke a seet
-                    bookBtn = `<button class="book-now-btn" onclick="bookSeat('${userId}','${events[i].id}')">Book</button>`;
+                    bookBtn = `<button class="book-now-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="return bookSeat('${userId}','${events[i].id}')">Book</button>`;
                 }
             }else if(isBooked != true){ // if there are NO available seets and the user DID NOT book a seet
                 bookBtn = `<button class="no-seats-btn book-now-btn disabled">Seats ran out</button>`;
