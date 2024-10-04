@@ -243,7 +243,7 @@ async function viewEvents(filter){
         newHTML +=
         `<div class="newspaper-box">
                 <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image" class="newspaper-img" />
-                <h2 class="newspaper-title">${events[i].title}</h2>
+                <h2 class="newspaper-title">${events[i].title} <span class="tags">#${events[i].category}</span></h2>
                 <p class="newspaper-description">${events[i].description}</p>
                 <div class="event-icons">
                     <p class="icon"><i class="fas fa-clock"></i> ${date} (${time})</p>

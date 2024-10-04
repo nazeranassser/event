@@ -79,7 +79,7 @@
                       <ul id="navigation">
                         <li><a href="index.html">Home</a></li>
                         <li>
-                          <a href="#">Categories</a>
+                          <!-- <a href="#">Categories</a>
                           <ul class="submenu">
                             <li><a href="charity.html">Charity's</a></li>
                             <li><a href="food.html">Food & Fitness</a></li>
@@ -87,7 +87,23 @@
                             <li>
                               <a href="Corporate.html">Corporate Events</a>
                             </li>
-                          </ul>
+                          </ul> -->
+                          <div class="dropdown submenu">
+                            <button class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Categories
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                              <button class="dropdown-item" type="button" id="all-filter-btn">All Events</button>
+                              <button class="dropdown-item" type="button" id="charity-filter-btn">Charity</button>
+                              <button class="dropdown-item" type="button" id="technology-filter-btn">Technology</button>
+                              <button class="dropdown-item" type="button" id="business-filter-btn">Business</button>
+                              <button class="dropdown-item" type="button" id="food-filter-btn">Food</button>
+                              <button class="dropdown-item" type="button" id="cultural-filter-btn">Cultural</button>
+                              <button class="dropdown-item" type="button" id="sport-filter-btn">Sport</button>
+                              <button class="dropdown-item" type="button" id="games-filter-btn">Games</button>
+                              
+                            </div>
+                          </div>
                         </li>
                         <li><a href="Edit.html">My EventAt!</a></li>
                         <li><a href="about.html">About Us!</a></li>
@@ -122,7 +138,7 @@
         <section class="home">
           <div class="home-content">
             <h1 class="" style="color: #000000; font-size: 40px">
-              Charity's Event
+              Upcoming Events 
             </h1>
           </div>
         </section>
@@ -132,22 +148,7 @@
 
       <!-- Newspaper Section Start -->
       <section class="newspaper-section">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" id="all-filter-btn">All Events</button>
-            <button class="dropdown-item" type="button" id="charity-filter-btn">Charity</button>
-            <button class="dropdown-item" type="button" id="technology-filter-btn">Technology</button>
-            <button class="dropdown-item" type="button" id="business-filter-btn">Business</button>
-            <button class="dropdown-item" type="button" id="food-filter-btn">Food</button>
-            <button class="dropdown-item" type="button" id="cultural-filter-btn">Cultural</button>
-            <button class="dropdown-item" type="button" id="sport-filter-btn">Sport</button>
-            <button class="dropdown-item" type="button" id="games-filter-btn">Games</button>
-            
-          </div>
-        </div>
+       
         <div class="newspaper-container" id="events-box">
           <div class="newspaper-box">
             <img
