@@ -28,18 +28,18 @@ function validation(form, start, end){
     formStatus = false
   }
 
-  // if(form.image.value == ""){
-  //   document.querySelector("#imageErrorMsg").innerHTML = "image field is required"
-  //   formStatus = false
-  // }
-  // else if (isImg(form.image.value)){
-  //   var image = changeImgName(form.image.value)
-  // }
-  // else{
-  //   var image = changeImgName(form.image.value)
-  //   document.querySelector("#imageErrorMsg").innerHTML = "use valid img extension"
-  //   formStatus = false
-  // }
+  if(form.image.value == ""){
+    document.querySelector("#imageErrorMsg").innerHTML = "image field is required"
+    formStatus = false
+  }
+  else if (isImg(form.image.value)){
+    var image = changeImgName(form.image.value)
+  }
+  else{
+    var image = changeImgName(form.image.value)
+    document.querySelector("#imageErrorMsg").innerHTML = "use valid img extension"
+    formStatus = false
+  }
 
   if(form.category.value == ""){
     document.querySelector("#categoryErrorMsg").innerHTML = "category field is required"
@@ -88,6 +88,8 @@ function validation(form, start, end){
     form.image.value = ""
     form.seats.value = ""
     form.location.value = ""
+
+    alert("The event was added successfully.")
   }
 
 }
@@ -122,14 +124,6 @@ async function addEvent(form, start, end, img) {
 
 
 }
-
-
-// function successMSG(msg){
-//   const success = document.querySelector("success")
-//   // success.classList = "bg-success border border-1 rounded"
-//   success.innerHTML = msg
-// }
-
 
 
 function isImg(image){

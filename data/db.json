@@ -285,6 +285,20 @@
       "totalSeats": 64,
       "bookedSeats": 0,
       "attendees": []
+    },
+    {
+      "id": "2330",
+      "title": "Qui nobis dolore deb",
+      "description": "Saepe veniam verita",
+      "image": "",
+      "category": "food",
+      "startTime": "2024-10-05T11:09",
+      "endTime": "2024-10-31T03:41",
+      "location": "Consectetur aut cupi",
+      "organizer": "9",
+      "totalSeats": 67,
+      "bookedSeats": 0,
+      "attendees": []
     }
   ]
 }
