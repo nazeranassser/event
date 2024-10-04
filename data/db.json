@@ -245,7 +245,6 @@
       "attendees": []
     },
     {
-<<<<<<< HEAD
       "id": "0748",
       "title": "Hic quo laborum eu d",
       "description": "Culpa quam rerum qu",
@@ -256,74 +255,6 @@
       "location": "Suscipit minima mole",
       "organizer": "9",
       "totalSeats": 65,
-=======
-      "id": "f864",
-      "title": "Ad ex aut natus est",
-      "description": "Laudantium sequi it",
-      "image": {},
-      "category": "food",
-      "startTime": "2024-10-05T12:02",
-      "endTime": "2024-10-11T08:45",
-      "location": "Vel est laborum volu",
-      "organizer": "9",
-      "totalSeats": 66,
-      "bookedSeats": 0,
-      "attendees": []
-    },
-    {
-      "id": "dc26",
-      "title": "Ea voluptate cum est",
-      "description": "Odio aliqua In volu",
-      "image": {},
-      "category": "corporate",
-      "startTime": "2024-10-11T15:50",
-      "endTime": "2024-10-05T18:20",
-      "location": "Et non et dolore imp",
-      "organizer": "9",
-      "totalSeats": 85,
-      "bookedSeats": 0,
-      "attendees": []
-    },
-    {
-      "id": "f022",
-      "title": "Sed doloremque eveni",
-      "description": "Minim exercitationem",
-      "image": "",
-      "category": "corporate",
-      "startTime": "2024-10-12T19:20",
-      "endTime": "2024-10-16T04:30",
-      "location": "Saepe delectus irur",
-      "organizer": "9",
-      "totalSeats": 64,
-      "bookedSeats": 0,
-      "attendees": []
-    },
-    {
-      "id": "2330",
-      "title": "Qui nobis dolore deb",
-      "description": "Saepe veniam verita",
-      "image": "",
-      "category": "food",
-      "startTime": "2024-10-05T11:09",
-      "endTime": "2024-10-31T03:41",
-      "location": "Consectetur aut cupi",
-      "organizer": "9",
-      "totalSeats": 67,
-      "bookedSeats": 0,
-      "attendees": []
-    },
-    {
-      "id": "573b",
-      "title": "dsasddsadefsdadf",
-      "description": "aeaeafmdksmaldsds",
-      "image": "",
-      "category": "food",
-      "startTime": "2024-10-05T17:29",
-      "endTime": "2024-10-18T17:29",
-      "location": "gjygyhj",
-      "organizer": "6",
-      "totalSeats": 887,
->>>>>>> refs/remotes/origin/main
       "bookedSeats": 0,
       "attendees": []
     },
