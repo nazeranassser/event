@@ -209,6 +209,20 @@
       "totalSeats": 15,
       "bookedSeats": 0,
       "attendees": []
+    },
+    {
+      "id": "bcec",
+      "title": "Food Fiesta 2024",
+      "description": "A culinary celebration showcasing gourmet dishes from around the world.",
+      "image": "notes.png",
+      "category": "food",
+      "startTime": "2024-10-04T03:39",
+      "endTime": "2024-10-04T01:39",
+      "location": "jordan",
+      "organizer": "6",
+      "totalSeats": 30,
+      "bookedSeats": 0,
+      "attendees": []
     }
   ]
 }

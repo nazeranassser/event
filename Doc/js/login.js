@@ -4,11 +4,9 @@ const emailField = document.getElementById("floatingEmail");
 const passwordField = document.getElementById("floatingPassword");
 const confirmPasswordField = document.getElementById("floatingConfirmPassword");
 const registerButton = document.getElementById("floatingRegister");
-
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
-
 const loginEmail = document.getElementById("loginEmail");
 const loginPassword = document.getElementById("loginPassword");
 const loginSubmit = document.getElementById("loginSubmit");
@@ -138,17 +136,17 @@ async function loginUser(event) {
 
         const validUser = data.find(user => user.email === loginEmail.value && user.password === loginPassword.value);
         const userInfo = data.findIndex(user => user.email === loginEmail.value );
-       
-        
 
         if (validUser) {
-            alert(userInfo
-            )
-            console.log('##########################');
+            // alert(userInfo
+            // )
+            // console.log('##########################');
             
             localStorage.setItem("isLoggedIn", "true"); 
-            localStorage.setItem("userInfo", JSON.stringify(data[userInfo]));
+            // localStorage.setItem("userInfo", JSON.stringify(data[userInfo]));
+            alert("Welcome, " +  data[userInfo].username + "!");
             window.location.href = "index.html";  
+            
         } else {
             alert("Invalid email or password!");
         }
