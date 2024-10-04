@@ -1,5 +1,5 @@
-let isLogged = localStorage.getItem('isLoggedIn');
-console.log(`logged: ${isLogged}`);
+let isLogged = Boolean(localStorage.getItem('isLoggedIn'));
+// console.log(`logged: ${isLogged}`);
 
 async function getUser(id) {
     try {
@@ -104,53 +104,63 @@ async function updateEvent(id, updatedField) {
         console.error(error.message);
     }
 }
-async function bookSeat(userId, eventId) {
-    // Update user data
-    let user = await getUser(userId);
-    let userRegisteredEvents = user.registeredEvents;
-    if(userRegisteredEvents.includes(eventId) == false){
-        userRegisteredEvents.push(Number(eventId));
-        let updatedDataUser = {"registeredEvents": userRegisteredEvents};
-        updateUser(userId, updatedDataUser);
+async function  bookedOrNot(userId, eventId) { //to check if user have booked the seat, if yes; return true, if no; return false. and if the user is not logged in will return 'notLogged'
+    let isBooked;
+    if(isLogged == true){
+         //to check if the user is already book the event or nit
+        let user = await getUser(userId);
+        let event = await getEvent(eventId);
+        if(user.registeredEvents.includes(eventId) == false || event.attendees.includes(userId) == false){
+            isBooked = false;
+        }else{
+            isBooked = true;
+        }
+        return isBooked
+    }else{
+        console.log("please login first")
+        return 'notLogged';
     }
-    
 
-    //Update event data
-    let event = await getEvent(eventId);
-    let eventAttendees = event.attendees;
-    let eventBookedSeats = Number(event.bookedSeats);
-    // console.log(`book seats: ${eventBookedSeats}`);
-    if(eventAttendees.includes(userId) == false ){
-        eventAttendees.push(Number(userId));
-        eventBookedSeats += 1;
-        // console.log(eventAttendees);
-        let updatedDataEvent = {
-            "attendees": eventAttendees,
-            "bookedSeats": eventBookedSeats
-        };
-        updateEvent(eventId, updatedDataEvent);
-    }
-    
-    
 }
-//////////// test area
+async function bookSeat(userId, eventId) {
+    if(isLogged == true){
+         //to check if the user is already book the event or nit
+        let user = await getUser(userId);
+        let userRegisteredEvents = user.registeredEvents;
+        let event = await getEvent(eventId);
+        let eventAttendees = event.attendees;
+        let eventBookedSeats = Number(event.bookedSeats);
+        if(userRegisteredEvents.includes(eventId) == false && eventAttendees.includes(userId) == false){
+            isBooked = false;
+        }else{
+            isBooked = true;
+        }
+        if(!isBooked){
+            userRegisteredEvents.push(Number(eventId));
+            let updatedDataUser = {"registeredEvents": userRegisteredEvents};
+            updateUser(userId, updatedDataUser);
+            eventAttendees.push(Number(userId));
+            eventBookedSeats += 1;
+            // console.log(eventAttendees);
+            let updatedDataEvent = {
+                "attendees": eventAttendees,
+                "bookedSeats": eventBookedSeats
+            };
+            updateEvent(eventId, updatedDataEvent);
+        }else{
+           console.log("Already booked");
+        }
+    }else{
+        console.log("please login first")
+    }
+}
 
-
-
-// bookSeat(1,1)
-
-
-
-
-
-
-///////////////////
 async function viewEvents(){
-    console.log('viewEvents Function');
     let events = await getAllEvents();
     // console.log(events);
     let box = document.getElementById("events-box");
     let newHTML = '';
+    let bookBtn, isBooked;
     let timeArray, date,  time;
     let userInfo = JSON.parse(localStorage.getItem('userInfo'));
     let userId = userInfo.id;
@@ -160,6 +170,14 @@ async function viewEvents(){
         timeArray = events[i].startTime.split('T');
         date = timeArray[0];
         time = timeArray[1];
+        isBooked = await bookedOrNot(Number(userId), Number(events[i].id));
+        // console.log(userId +' '+ events[i].id);
+        // console.log(isBooked);
+        if(isBooked == true){
+            bookBtn = `<button class="booked-btn book-now-btn" >Booked</button>`;
+        }else{
+            bookBtn = `<button class="book-now-btn"  onclick="bookSeat('${userId}',${events[i].id})">Book</button>`;
+        }
         newHTML +=
         `<div class="newspaper-box">
                 <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image" class="newspaper-img" />
@@ -170,9 +188,28 @@ async function viewEvents(){
                     <p class="icon"><i class="fas fa-map-marker-alt"></i> ${events[i].location}</p> 
                     <p class="icon click-counter"><i class="fa-solid fa-chair"></i> Seats: ${events[i].bookedSeats}/${events[i].totalSeats}</p>
                 </div>
-                <button class="book-now-btn" id="btn-book" onclick="bookSeat(${userId},${events[i].id})">Book</button>
+                ${bookBtn}
             </div>`;
+
     }
     // console.log(events);
     box.innerHTML = newHTML;
 }
+
+
+//////////// test area
+
+
+(async () => {
+    console.log(await bookedOrNot(10,1))
+    // await viewEvents();
+    document.getElementsByClassName("booked-btn").style.backgroundColor = 'green';
+  })()
+  
+
+
+
+
+
+
+///////////////////

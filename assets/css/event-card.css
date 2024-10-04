@@ -1,3 +1,7 @@
+.booked-btn{
+  background-color: green !important;
+}
+
 .newspaper-container {
   display: grid;
   justify-content: space-around;
