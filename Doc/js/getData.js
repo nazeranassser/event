@@ -221,6 +221,15 @@ async function  bookedOrNot(userId, eventId) { //to check if user have booked th
     }
 
 }
+async function checkAvailableSeats(eventId) {
+    const event = await getEvent(eventId);
+    let totalSeats = event.totalSeats;
+    let bookedSeats = event.bookedSeats;
+    // console.log(`total seats: ${typeof(totalSeats)}`);
+    // console.log(`booked seats: ${bookedSeats}`);
+    let availabaleSeats = totalSeats - bookedSeats;
+    return availabaleSeats;
+}
 async function bookSeat(userId, eventId) {
     if(isLogged == true){
          //to check if the user is already book the event or nit
@@ -371,7 +380,8 @@ document.getElementById("games-filter-btn").onclick = function() { viewEvents('g
 // getAllEvents()
 (async () => {
     // console.log(await getFilteredEvents('Entertainment'))
-    console.log(await timeFilter('2024-11-04T03:39'));
+    // console.log(await timeFilter('2024-11-04T03:39'));
+    console.log(await checkAvailableSeats(1));
 
   })()
 
