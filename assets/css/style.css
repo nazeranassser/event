@@ -446,6 +446,11 @@ hr {
   box-shadow: none;
 }
 
+.no-seats-btn{
+  background-color: #999 !important;
+  cursor: default !important;
+}
+
 .header-btn {
   padding: 30px 26px;
 }

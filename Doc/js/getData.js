@@ -9,6 +9,7 @@ function deleteElement(arr, value){ // return a new array without all elements w
     }
     return newArray;
 }
+
 async function getUser(id) {
     try {
         const url = `http://localhost:3000/users/${id}`;
@@ -72,40 +73,6 @@ async function getFilteredEvents(filterValue) {
         console.error(error.message);
     }
 }
-// function compareDates(biggerDate, smallerDate){ //check if biggerDate is bigger than smallerDate
-//     date1 = new Date(biggerDate);
-//     date2 = new Date(smallerDate);
-//     if(date1 > date2){
-//         return true;
-//     }else{
-//         return false
-//     }
-//   }
-// async function timeFilter(filter) {
-//     try {
-//         const url = `http://localhost:3000/events`;
-//         const response = await fetch(url);
-
-//         if (!response.ok) {
-//         throw new Error(`Response status: ${response.status}`);
-//         }
-//         const events = await response.json();
-//         let filteredEvents = [];
-//         const currentDate = new Date();
-//         let eventTime;
-//         for(let i = 0; i < events.length; i++){ 
-//             eventTime =  Date(events[i].startTime);
-//             // console.log(compareDates(filter, eventTime));
-//             if(compareDates(eventTime, filter)){
-//                 filteredEvents.push(events[i]);
-//             }
-//         }
-//         return filteredEvents;
-//     } catch (error) {  
-//         console.error(error.message);
-//     }
-// }
-
 function compareDates(biggerDate, smallerDate) {
     const date1 = new Date(biggerDate); // Declare with const/let
     const date2 = new Date(smallerDate);
@@ -225,8 +192,6 @@ async function checkAvailableSeats(eventId) {
     const event = await getEvent(eventId);
     let totalSeats = event.totalSeats;
     let bookedSeats = event.bookedSeats;
-    // console.log(`total seats: ${typeof(totalSeats)}`);
-    // console.log(`booked seats: ${bookedSeats}`);
     let availabaleSeats = totalSeats - bookedSeats;
     return availabaleSeats;
 }
@@ -333,12 +298,20 @@ async function viewEvents(filter, filterDate) {
         time = timeArray[1];
 
         if (localStorage.getItem('isLoggedIn') == 'true') {
-            isBooked = await bookedOrNot(Number(userId), Number(events[i].id));
-            if (isBooked == true) {
+            let availabaleSeats = await checkAvailableSeats(events[i].id);
+            if(availabaleSeats > 0){
+                isBooked = await bookedOrNot(Number(userId), Number(events[i].id));
+                if (isBooked == true) {
+                    bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}',${events[i].id})">UnBook</button>`;
+                } else {
+                    bookBtn = `<button class="book-now-btn" onclick="bookSeat('${userId}',${events[i].id})">Book</button>`;
+                }
+            }else if(isBooked == false){
+                bookBtn = `<button class="no-seats-btn book-now-btn disabled">Seats ran out</button>`;
+            }else{
                 bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}',${events[i].id})">UnBook</button>`;
-            } else {
-                bookBtn = `<button class="book-now-btn" onclick="bookSeat('${userId}',${events[i].id})">Book</button>`;
             }
+            
         } else {
             bookBtn = `<a href="login.html" class="btn card-btn">Book Now!</a>`;
         }
