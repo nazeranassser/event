@@ -302,20 +302,25 @@ async function viewEvents(filter, filterDate) {
         time = timeArray[1];
         // Add action buttons according of different situations
         if (localStorage.getItem('isLoggedIn') == 'true') { // if logged in then:
-            availableSeats = await checkAvailableSeats(events[i].id); // check the number of available seets
-            if(availableSeats > 0){ // if there are available seets: 
+            if(compareDates(events[i].startTime, Date.now())){ // 
+                availableSeats = await checkAvailableSeats(events[i].id); // check the number of available seats
+            if(availableSeats > 0){ // if there are available seats: 
                 isBooked = await bookedOrNot(userId, events[i].id);
-                if (isBooked == true) { // if there are available seets and the user have booked a seet
+                if (isBooked == true) { // if there are available seats and the user have booked a seat
                     bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
-                } else {    // if there are available seets and the user DID NOT booke a seet
+                } else {    // if there are available seats and the user DID NOT booke a seat
                     bookBtn = `<button class="book-now-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="return bookSeat('${userId}','${events[i].id}')">Book</button>`;
                 }
-            }else if(isBooked != true){ // if there are NO available seets and the user DID NOT book a seet
+            }else if(isBooked != true){ // if there are NO available seats and the user DID NOT book a seat
                 bookBtn = `<button class="no-seats-btn book-now-btn disabled">Seats ran out</button>`;
-            }else{ // if there are No available seets and the user have booked a seet
+            }else{ // if there are No available seats and the user have booked a seat
                 bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
                 console.log(isBooked);
 
+            }
+            
+            }else{ //If the event date is passed
+                bookBtn = `<button class="no-seats-btn book-now-btn disabled">Date passed</button>`;
             }
             
         } else { // if not logged in then:
@@ -330,7 +335,7 @@ async function viewEvents(filter, filterDate) {
             <div class="event-icons">
                 <p class="icon"><i class="fas fa-clock"></i> ${date} (${time})</p>
                 <p class="icon"><i class="fas fa-map-marker-alt"></i> ${events[i].location}</p>
-                <p class="icon click-counter"><i class="fa-solid fa-chair"></i> Seats: ${events[i].bookedSeats}/${events[i].totalSeats} (${availableSeats} available)</p>
+                <p class="icon click-counter"><i class="fa-solid fa-chair"></i> Seats: ${events[i].bookedSeats}/${events[i].totalSeats}</p>
             </div>
             ${bookBtn}
         </div>`;
@@ -363,7 +368,7 @@ document.getElementById("games-filter-btn").onclick = function() { viewEvents('g
     // console.log(await checkAvailableSeats(3));
 
   })()
-
-
+console.log(compareDates('2024-10-20T09:00:00', Date.now()));
+// console.log(Date.now());
 
 ///////////////////
