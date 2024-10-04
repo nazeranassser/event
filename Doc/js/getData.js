@@ -305,17 +305,15 @@ async function viewEvents(filter, filterDate) {
             availableSeats = await checkAvailableSeats(events[i].id); // check the number of available seets
             if(availableSeats > 0){ // if there are available seets: 
                 isBooked = await bookedOrNot(userId, events[i].id);
-                console.log(isBooked);
                 if (isBooked == true) { // if there are available seets and the user have booked a seet
                     bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
                 } else {    // if there are available seets and the user DID NOT booke a seet
                     bookBtn = `<button class="book-now-btn" onclick="bookSeat('${userId}','${events[i].id}')">Book</button>`;
                 }
-            }else if(isBooked == false){ // if there are NO available seets and the user DID NOT book a seet
+            }else if(isBooked != true){ // if there are NO available seets and the user DID NOT book a seet
                 bookBtn = `<button class="no-seats-btn book-now-btn disabled">Seats ran out</button>`;
             }else{ // if there are No available seets and the user have booked a seet
                 bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
-                console.log('case 2');
                 console.log(isBooked);
 
             }
@@ -362,7 +360,7 @@ document.getElementById("games-filter-btn").onclick = function() { viewEvents('g
 (async () => {
     // console.log(await getFilteredEvents('Entertainment'))
     // console.log(await timeFilter('2024-11-04T03:39'));
-    console.log(await checkAvailableSeats(1));
+    // console.log(await checkAvailableSeats(3));
 
   })()
 
