@@ -351,6 +351,7 @@ async function viewEvents(filter, filterDate) {
     box.innerHTML = newHTML;
 }
 
+
 ///////// Add filtration to the page
 document.getElementById("all-filter-btn").onclick = function() {viewEvents()};
 document.getElementById("charity-filter-btn").onclick = function() {viewEvents('charity')}
