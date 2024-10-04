@@ -68,7 +68,7 @@ function showEvents(events, container){
     node.setAttribute("class", "newspaper-box")
 
     node.innerHTML = `
-      <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image"
+      <img src="assets/img/events/${event.image}" alt="Event Image"
           class="newspaper-img" />
       <h2 class="newspaper-title">${event.title}</h2>
       <p class="newspaper-description">${event.description}</p>

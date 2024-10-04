@@ -31,12 +31,8 @@ function validation(form, start, end){
     document.querySelector("#imageErrorMsg").innerHTML = "image field is required"
     formStatus = false
   }
-  else if (isImg(form.image.value)){
-    console.log("before change img name")
-    const image = changeImgName(form.image.value)
-    console.log("after change img name")
-  }
-  else {
+  else if (!isImg(form.image.value)){
+    var image = changeImgName(form.image.value)
     document.querySelector("#imageErrorMsg").innerHTML = "use valid img extension"
     formStatus = false
   }
@@ -70,21 +66,21 @@ function validation(form, start, end){
 
 
 
-  // if(formStatus){
-  //   addEvent(form, start, end)
-  //   console.log("The event added successfully.")
+  if(formStatus){
+    addEvent(form, start, end)
+    console.log("The event added successfully.")
 
 
-  //   form.title.value = ""
-  //   form.description.value = ""
-  //   form.category.value = ""
-  //   start = ""
-  //   end = ""
-  //   form.seats.value = ""
-  //   form.location.value = ""
-  // }
+    form.title.value = ""
+    form.description.value = ""
+    form.category.value = ""
+    start = ""
+    end = ""
+    form.image.value = ""
+    form.seats.value = ""
+    form.location.value = ""
+  }
 
-  
 }
 
 
@@ -98,7 +94,7 @@ async function addEvent(form, start, end, img) {
     body: JSON.stringify({
       "title": form.title.value,
       "description": form.description.value,
-      "image": img,
+      "image": form.image.value,
       "category": form.category.value,
       "startTime": start,
       "endTime": end,
@@ -137,9 +133,16 @@ function isImg(image){
 }
 
 
-function changeImgName(image){
-  let img = image.split(".")
-  img[img.length -2] = img[img.length -2]+(new Date()).getTime()
+// function changeImgName(image){
+//   let img = image.split(".")
+//   img[img.length -2] = img[img.length -2]+(new Date()).getTime()
   
-  return img.join(".")
-}
+//   console.log(img)
+//   console.log(img.join("."))
+//   console.log(img)
+//   console.log(img.join("."))
+
+
+
+//   return img.join(".")
+// }
