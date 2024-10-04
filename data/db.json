@@ -218,6 +218,20 @@
       "totalSeats": 15,
       "bookedSeats": 0,
       "attendees": []
+    },
+    {
+      "id": "a076",
+      "title": "Rerum quia fugit pr",
+      "description": "Velit dolorem dignis",
+      "image": "fresh-green-leaf-with-dew-drop-reflection-generated-by-ai.jpg",
+      "category": "charity",
+      "startTime": "2006-07-11T03:53",
+      "endTime": "1986-10-26T00:37",
+      "location": "Labore blanditiis mi",
+      "organizer": "9",
+      "totalSeats": 63,
+      "bookedSeats": 0,
+      "attendees": []
     }
   ]
 }

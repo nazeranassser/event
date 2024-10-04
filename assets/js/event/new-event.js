@@ -31,7 +31,10 @@ function validation(form, start, end){
     document.querySelector("#imageErrorMsg").innerHTML = "image field is required"
     formStatus = false
   }
-  else if (!isImg(form.image.value)){
+  else if (isImg(form.image.value)){
+    var image = changeImgName(form.image.value)
+  }
+  else{
     var image = changeImgName(form.image.value)
     document.querySelector("#imageErrorMsg").innerHTML = "use valid img extension"
     formStatus = false
@@ -63,11 +66,11 @@ function validation(form, start, end){
   }
 
 
-
+  console.log(form.image.value)
 
 
   if(formStatus){
-    addEvent(form, start, end)
+    addEvent(form, start, end, image)
     console.log("The event added successfully.")
 
 
@@ -94,7 +97,7 @@ async function addEvent(form, start, end, img) {
     body: JSON.stringify({
       "title": form.title.value,
       "description": form.description.value,
-      "image": form.image.value,
+      "image": img,
       "category": form.category.value,
       "startTime": start,
       "endTime": end,
@@ -133,16 +136,12 @@ function isImg(image){
 }
 
 
-// function changeImgName(image){
-//   let img = image.split(".")
-//   img[img.length -2] = img[img.length -2]+(new Date()).getTime()
-  
-//   console.log(img)
-//   console.log(img.join("."))
-//   console.log(img)
-//   console.log(img.join("."))
+function changeImgName(image){
+  const toRemove = "C:\\fakepath\\"
+  let img = image.replace(/.*?C:\\fakepath\\/, "");
 
+  console.log(image)
+  console.log(img)
 
-
-//   return img.join(".")
-// }
+  return img
+}
