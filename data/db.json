@@ -90,7 +90,9 @@
       "email": "shadi@mail.com",
       "password": "Shadi123!",
       "publishedEvents": [],
-      "registeredEvents": []
+      "registeredEvents": [
+        1
+      ]
     }
   ],
   "events": [
@@ -105,8 +107,10 @@
       "location": "Amman, Jordan",
       "organizer": 1,
       "totalSeats": 100,
-      "bookedSeats": 76,
-      "attendees": []
+      "bookedSeats": 77,
+      "attendees": [
+        10
+      ]
     },
     {
       "id": "2",
@@ -137,7 +141,8 @@
       "totalSeats": 500,
       "bookedSeats": 459,
       "attendees": [
-        2
+        2,
+        10
       ]
     },
     {
@@ -152,7 +157,9 @@
       "organizer": "8646",
       "totalSeats": 100,
       "bookedSeats": 1,
-      "attendees": []
+      "attendees": [
+        10
+      ]
     },
     {
       "id": "5",
@@ -166,7 +173,9 @@
       "organizer": "8646",
       "totalSeats": 100,
       "bookedSeats": 2,
-      "attendees": []
+      "attendees": [
+        10
+      ]
     },
     {
       "id": "985c",
@@ -174,14 +183,6 @@
       "description": "Dolorem qui dignissi",
       "image": "blog-bg.jpeg",
       "category": "cultural",
-<<<<<<< HEAD
-      "startTime": "2019-07-22T17:51",
-      "endTime": "1988-08-14T16:33",
-      "location": "Ad provident iure d",
-      "organizer": "8646",
-      "totalSeats": 100,
-      "bookedSeats": 1,
-=======
       "startTime": "2010-08-14T12:40",
       "endTime": "1982-08-06T10:00",
       "location": "Aut soluta pariatur",
@@ -216,7 +217,6 @@
       "organizer": "9",
       "totalSeats": 15,
       "bookedSeats": 0,
->>>>>>> 6c8ca1da20b14e1fbc29e36abbf3aa4bafe2ddd2
       "attendees": []
     },
     {
