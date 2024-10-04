@@ -1,4 +1,5 @@
 function getEventData(){
+
   const form = document.querySelector("#newEventForm")
   const startTime = document.querySelector("#start_time").value
   const endTime = document.querySelector("#end_time").value
@@ -6,6 +7,7 @@ function getEventData(){
 
 
   validation(form, startTime, endTime)
+  
   return form
 }
 
@@ -16,53 +18,47 @@ function validation(form, start, end){
   let formStatus = true
 
   if(form.title.value == ""){
-    const span = document.querySelector("#titleErrorMsg")
-    span.innerHTML = "title field is required"
+    document.querySelector("#titleErrorMsg").innerHTML = "title field is required"
     formStatus = false
   }
 
   if(form.description.value == ""){
-    const span = document.querySelector("#descriptionErrorMsg")
-    span.innerHTML = "description field is required"
+    document.querySelector("#descriptionErrorMsg").innerHTML = "description field is required"
     formStatus = false
   }
 
   if(form.image.value == ""){
-
-    const span = document.querySelector("#imageErrorMsg")
-    span.innerHTML = "image field is required"
+    document.querySelector("#imageErrorMsg").innerHTML = "image field is required"
     formStatus = false
   }
-  else if (isImg(form.image.value)){
-    form.image.value = changeImgName(form.image.value)
-  }
-  else {
-    const span = document.querySelector("#imageErrorMsg")
-    span.innerHTML = "use valid img extension"
+  else if (!isImg(form.image.value)){
+    var image = changeImgName(form.image.value)
+    document.querySelector("#imageErrorMsg").innerHTML = "use valid img extension"
     formStatus = false
   }
 
   if(form.category.value == ""){
-    const span = document.querySelector("#categoryErrorMsg")
-    span.innerHTML = "category field is required"
+    document.querySelector("#categoryErrorMsg").innerHTML = "category field is required"
     formStatus = false
   }
 
   if(start == ""){
-    const span = document.querySelector("#startErrorMsg")
-    span.innerHTML = "Starting date field is required"
+    document.querySelector("#startErrorMsg").innerHTML = "Starting date field is required"
     formStatus = false
   }
 
   if(end == ""){
-    const span = document.querySelector("#endErrorMsg")
-    span.innerHTML = "Ending date field is required"
+    document.querySelector("#endErrorMsg").innerHTML = "Ending date field is required"
+    formStatus = false
+  }
+
+  if(form.seats.value == ""){
+    document.querySelector("#seatsErrorMsg").innerHTML = "Total seats field is required"
     formStatus = false
   }
 
   if(form.location.value == ""){
-    const span = document.querySelector("#locationErrorMsg")
-    span.innerHTML = "Location field is required"
+    document.querySelector("#locationErrorMsg").innerHTML = "Location field is required"
     formStatus = false
   }
 
@@ -78,17 +74,18 @@ function validation(form, start, end){
     form.title.value = ""
     form.description.value = ""
     form.category.value = ""
-    form.startTime.value = ""
-    form.endTime.value = ""
+    start = ""
+    end = ""
+    form.image.value = ""
+    form.seats.value = ""
     form.location.value = ""
   }
-
 
 }
 
 
 
-async function addEvent(form, start, end) {
+async function addEvent(form, start, end, img) {
 
 
   const response = await fetch("http://localhost:3000/events", {
@@ -97,13 +94,13 @@ async function addEvent(form, start, end) {
     body: JSON.stringify({
       "title": form.title.value,
       "description": form.description.value,
-      "image": img.join("."),
+      "image": form.image.value,
       "category": form.category.value,
       "startTime": start,
       "endTime": end,
       "location": form.location.value,
       "organizer": JSON.parse(localStorage.getItem("userInfo")).id,
-      "totalSeats": 100,
+      "totalSeats": parseInt(form.seats.value),
       "bookedSeats": 0,
       "attendees": []
     })
@@ -136,11 +133,16 @@ function isImg(image){
 }
 
 
-function changeImgName(image){
-  let img = image.split(".")
-  img[img.length -2] = img[img.length -2]+(new Date()).getTime()
-
-  console.log((typeof img.join(".") == "string"))
+// function changeImgName(image){
+//   let img = image.split(".")
+//   img[img.length -2] = img[img.length -2]+(new Date()).getTime()
   
-  return "  "
-}
+//   console.log(img)
+//   console.log(img.join("."))
+//   console.log(img)
+//   console.log(img.join("."))
+
+
+
+//   return img.join(".")
+// }
