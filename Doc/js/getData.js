@@ -43,13 +43,31 @@ async function getAllEvents() {
     try {
         const url = `http://localhost:3000/events`;
         const response = await fetch(url);
+        if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+        }
+        const events = await response.json();
+        return events;
+    } catch (error) {  
+        console.error(error.message);
+    }
+}
+async function getFilteredEvents(filter) {
+    try {
+        const url = `http://localhost:3000/events`;
+        const response = await fetch(url);
 
         if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
         }
         const events = await response.json();
-        // console.log(events);
-        return events;
+        let filteredEvents = [];
+        for(let i = 0; i < events.length; i++){ //filter the events by 
+            if(events[i].category == filter){
+                filteredEvents.push(events[i])
+            }
+        }
+        return filteredEvents;
     } catch (error) {  
         console.error(error.message);
     }
@@ -69,7 +87,6 @@ async function getEvent(id) {
         console.error(error.message);
     }
 }
-
 async function updateUser(id, updatedField) {
     try {
         const url = `http://localhost:3000/users/${id}`;
@@ -112,7 +129,7 @@ async function updateEvent(id, updatedField) {
         console.error(error.message);
     }
 }
-async function  bookedOrNot(userId, eventId) { //to check if user have booked the seat, if yes; return true, if no; return false. and if the user is not logged in will return 'notLogged'
+async function  bookedOrNot(userId, eventId) { //to check if user have booked the seat, if yes; return true, if no; return false. and if no user logged in will return 'notLogged'
     let isBooked;
     if(isLogged == true){
          //to check if the user is already book the event or nit
@@ -162,7 +179,6 @@ async function bookSeat(userId, eventId) {
         console.log("please login first")
     }
 }
-
 async function UnBookSeat(userId, eventId){
     if(isLogged == true){
         //to check if the user is already book the event or nit
@@ -196,9 +212,13 @@ async function UnBookSeat(userId, eventId){
        console.log("please login first")
    }
 }
-
-async function viewEvents(){
-    let events = await getAllEvents();
+async function viewEvents(filter){
+    let events
+    if(filter){
+        events = await getFilteredEvents(filter);
+    }else{
+        events = await getAllEvents();
+    }
     // console.log(events);
     let box = document.getElementById("events-box");
     let newHTML = '';
@@ -237,24 +257,23 @@ async function viewEvents(){
     // console.log(events);
     box.innerHTML = newHTML;
 }
+///////// Add filtration to the page
+document.getElementById("all-filter-btn").onclick = function() {viewEvents()};
+document.getElementById("charity-filter-btn").onclick = function() {viewEvents('charity')}
+document.getElementById("technology-filter-btn").onclick = function() { viewEvents('Technology')};
+document.getElementById("business-filter-btn").onclick = function() { viewEvents('Business')};
+document.getElementById("food-filter-btn").onclick = function() { viewEvents('food')};
+document.getElementById("cultural-filter-btn").onclick = function() { viewEvents('cultural')};
+document.getElementById("sport-filter-btn").onclick = function() { viewEvents('sport')};
+document.getElementById("games-filter-btn").onclick = function() { viewEvents('games')};
 
 
-//////////// test area
-
-
-// (async () => {
-//     console.log(await bookedOrNot(10,1))
-//     // await viewEvents();
-//     document.getElementsByClassName("booked-btn").style.backgroundColor = 'green';
-//   })()
-
-
-
-  
-
-
-
-
+//////////////
+//////////// testing area
+// getAllEvents()
+(async () => {
+    console.log(await getFilteredEvents('Entertainment'))
+  })()
 
 
 ///////////////////
