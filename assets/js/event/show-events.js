@@ -62,7 +62,6 @@ async function showEvents(events, container, own){
 
   const eventContainer = document.querySelector(container)
   eventContainer.innerHTML = ""
-
   let count = 1;
   for (const event of events) {
     let node = document.createElement("div")
@@ -110,7 +109,7 @@ async function showEvents(events, container, own){
       
       let unBookBtn = document.createElement("div")
       unBookBtn.innerHTML = `
-          <div id="unBookBtn${count}" onclick="" class="p-2 mt-2 text-center"
+          <div id="unBookBtn${count}" onclick="UnBookSeat(${JSON.parse(localStorage.getItem("userInfo")).id}, ${event.id})" class="p-2 mt-2 text-center"
           style="width:100%; background-color:red; border-radius: 4px; color: #fff; cursor: pointer;">UnBook</div>
       `
 
@@ -123,3 +122,4 @@ async function showEvents(events, container, own){
   }
 
 }
+
