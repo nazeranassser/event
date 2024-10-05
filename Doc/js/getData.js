@@ -371,9 +371,9 @@ async function viewEvents(filter, filterDate) {
         // Set the startDate to filterDate
         const startDate = new Date(filterDate);
         
-        // Set the endDate to 3 days from the filterDate
+        // Set the endDate to 7 days from the filterDate
         const endDate = new Date();
-        endDate.setDate(startDate.getDate() + 3);
+        endDate.setDate(startDate.getDate() + 7);
         
         // Call the timeFilter function with startDate and endDate
         events = await timeFilter(startDate, endDate);
