@@ -133,7 +133,7 @@ async function addEvent(form, start, end, img) {
 
 function isImg(image){
   const validImg = ["png", "jpg", "jpeg", "gif"]
-
+  
   if (validImg.indexOf(image.split(".")[image.length -1]) != -1){
     return true
   }
