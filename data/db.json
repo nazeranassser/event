@@ -261,6 +261,34 @@
       "attendees": [
         "6"
       ]
+    },
+    {
+      "id": "f56f",
+      "title": "Quia aperiam est ex",
+      "description": "Sed deleniti aut qui",
+      "image": "fresh-green-leaf-with-dew-drop-reflection-generated-by-ai.jpg",
+      "category": "business",
+      "startTime": "2024-10-12T10:52",
+      "endTime": "2024-10-19T02:13",
+      "location": "Ut nostrum nihil qui",
+      "organizer": "9",
+      "totalSeats": 54,
+      "bookedSeats": 0,
+      "attendees": []
+    },
+    {
+      "id": "e5ca",
+      "title": "Nam non adipisci eos",
+      "description": "Rerum eu ullamco est",
+      "image": "Distant-Black-Hole-Concept.jpg",
+      "category": "technology",
+      "startTime": "2024-10-12T01:08",
+      "endTime": "2024-10-19T15:10",
+      "location": "Ipsum accusantium Na",
+      "organizer": "9",
+      "totalSeats": 100,
+      "bookedSeats": 0,
+      "attendees": []
     }
   ]
 }
