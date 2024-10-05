@@ -103,7 +103,7 @@ function validation(form, start, end){
 
 async function addEvent(form, start, end, img) {
 
-
+  console.log("from add event")
   const response = await fetch("http://localhost:3000/events", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -133,11 +133,14 @@ async function addEvent(form, start, end, img) {
 
 function isImg(image){
   const validImg = ["png", "jpg", "jpeg", "gif"]
-  
-  if (validImg.indexOf(image.split(".")[image.length -1]) != -1){
+  const ext = image.split(".");
+
+  if (validImg.indexOf(ext[ext.length -1]) != -1){
     return true
   }
-  return false
+  else{
+    return false
+  }
 }
 
 
