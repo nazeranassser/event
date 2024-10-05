@@ -168,6 +168,23 @@ async function updateEvent(id, updatedField) {
         console.error(error.message);
     }
 }
+async function deleteEvent(id) {
+    let text = "Are you sure you want to delete this event?";
+    if (confirm(text) == true) {
+        try {
+            const url = `http://localhost:3000/events/${id}`;
+            const response = await fetch(url, {
+                method: "DELETE",
+            });
+
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+}
 async function  bookedOrNot(userId, eventId) { //to check if user have booked the seat, if yes; return true, if no; return false. and if no user logged in will return 'notLogged'
     let isBooked;
     if(isLogged == true){
@@ -264,6 +281,7 @@ async function UnBookSeat(userId, eventId){
     }
     }
 }
+/*
 async function viewEvents(filter, filterDate) {
     let events;
     // check if there is a filter, then apply it
@@ -342,6 +360,98 @@ async function viewEvents(filter, filterDate) {
 
     box.innerHTML = newHTML;
 }
+    */
+async function viewEvents(filter, filterDate) {
+    let events;
+
+    // check if there is a filter, then apply it
+    if (filter) {
+        events = await getFilteredEvents(filter);
+    } else if (filterDate) {
+        // Set the startDate to filterDate
+        const startDate = new Date(filterDate);
+        
+        // Set the endDate to 3 days from the filterDate
+        const endDate = new Date();
+        endDate.setDate(startDate.getDate() + 3);
+        
+        // Call the timeFilter function with startDate and endDate
+        events = await timeFilter(startDate, endDate);
+        console.log("Filtered by time range");
+    } else {
+        events = await getAllEvents();
+    }
+
+    const box = document.getElementById("events-box");
+    let newHTML = '';
+    let bookBtn, isBooked;
+    let timeArray, date, time;
+    let userInfo, userId, availableSeats, isOwner;
+
+    // Fix: Parse user information only once
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+        userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        userId = userInfo.id;
+    }
+
+    // Loop through events
+    for (let i = 0; i < events.length; i++) {
+        // Extract time and date from the date string
+        timeArray = events[i].startTime.split('T');
+        date = timeArray[0];
+        time = timeArray[1];
+
+        // Check if the current user is the event owner
+        isOwner = events[i].organizer === userId;
+
+        // Add action buttons depending on the user state and event status
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            if (compareDates(events[i].startTime, Date.now())) {
+                availableSeats = await checkAvailableSeats(events[i].id);
+
+                if (availableSeats > 0) {
+                    isBooked = await bookedOrNot(userId, events[i].id);
+
+                    if (isBooked) {
+                        bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
+                    } else {
+                        bookBtn = `<button class="book-now-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="return bookSeat('${userId}','${events[i].id}')">Book</button>`;
+                    }
+                } else if (!isBooked) {
+                    bookBtn = `<button class="no-seats-btn book-now-btn disabled">Seats ran out</button>`;
+                } else {
+                    bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
+                }
+            } else {
+                bookBtn = `<button class="no-seats-btn book-now-btn disabled">Date passed</button>`;
+            }
+
+            // Add "Edit Event" button if the user is the event owner
+            if (isOwner) {
+                bookBtn = `<button class="booked-btn book-now-btn" onclick="deleteEvent('${events[i].id}')">Delete Event</button>`;
+            }
+        } else {
+            bookBtn = `<a href="login.html" class="btn card-btn">Book Now!</a>`;
+        }
+
+        newHTML += `
+        <div class="newspaper-box">
+            <img src="./assets/img/events/${events[i].image}" alt="Event Image" class="newspaper-img" />
+            <h2 class="newspaper-title">${events[i].title} <span class="tags">#${events[i].category}</span></h2>
+            <p class="newspaper-description">${events[i].description}</p>
+            <div class="event-icons">
+                <p class="icon"><i class="fas fa-clock"></i> ${date} (${time})</p>
+                <p class="icon"><i class="fas fa-map-marker-alt"></i> ${events[i].location}</p>
+                <p class="icon click-counter"><i class="fa-solid fa-chair"></i> Seats: ${events[i].bookedSeats}/${events[i].totalSeats}</p>
+            </div>
+            ${bookBtn}
+        </div>`;
+    }
+
+    // Assign HTML content to the box after generating all HTML in the loop
+    box.innerHTML = newHTML;
+}
+
 
 
 ///////// Add filtration to the page
