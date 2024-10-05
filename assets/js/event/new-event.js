@@ -70,6 +70,11 @@ function validation(form, start, end){
     formStatus = false
   }
 
+  if(parseInt(form.seats.value) < 1){
+    document.querySelector("#seatsErrorMsg").innerHTML = "The event must have at least one seat."
+    formStatus = false
+  }
+
   if(form.location.value == ""){
     document.querySelector("#locationErrorMsg").innerHTML = "Location field is required"
     formStatus = false
