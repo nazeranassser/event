@@ -70,7 +70,7 @@ async function showEvents(events, container, own){
     node.innerHTML = `
         <div>
           <img src="assets/img/events/${event.image}" alt="Event Image"
-              class="newspaper-img" />
+              class="newspaper-img" style="height: 204px;"/>
           <h2 class="newspaper-title">${event.title}</h2>
           <p class="newspaper-description">${event.description}</p>
           <div class="event-icons d-flex flex-wrap">

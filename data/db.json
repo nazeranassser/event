@@ -89,8 +89,7 @@
       "password": "Qwertyuio1",
       "publishedEvents": [],
       "registeredEvents": [
-        "8d99",
-        "1"
+        "8d99"
       ]
     },
     {
@@ -103,26 +102,27 @@
         1,
         3
       ]
+    },
+    {
+      "id": "589a",
+      "username": "Ahmad Naser",
+      "email": "ahmad.naser@gmail.com",
+      "password": "Qwertyuiop1",
+      "publishedEvents": [],
+      "registeredEvents": [
+        "8ef3"
+      ]
+    },
+    {
+      "id": "337c",
+      "username": "Noor Ahmad",
+      "email": "noor.ahmad@gmail.com",
+      "password": "Qwertyuiop1",
+      "publishedEvents": [],
+      "registeredEvents": []
     }
   ],
   "events": [
-    {
-      "id": "1",
-      "title": "Tech Conference 2024",
-      "description": "A conference about the latest in technology.",
-      "image": "tech_conference.jpg",
-      "category": "Technology",
-      "startTime": "2024-11-20T09:00:00",
-      "endTime": "2024-11-20T17:00:00",
-      "location": "Amman, Jordan",
-      "organizer": 1,
-      "totalSeats": 100,
-      "bookedSeats": 78,
-      "attendees": [
-        10,
-        "9"
-      ]
-    },
     {
       "id": "2",
       "title": "Startup Workshop",
@@ -137,24 +137,6 @@
       "bookedSeats": 46,
       "attendees": [
         1,
-        6
-      ]
-    },
-    {
-      "id": "3",
-      "title": "Music Festival",
-      "description": "A festival showcasing local and international artists.",
-      "image": "music_festival.jpg",
-      "category": "Entertainment",
-      "startTime": "2024-12-05T18:00:00",
-      "endTime": "2024-12-05T23:00:00",
-      "location": "Dead Sea, Jordan",
-      "organizer": 1,
-      "totalSeats": 500,
-      "bookedSeats": 461,
-      "attendees": [
-        2,
-        10,
         6
       ]
     },
@@ -205,34 +187,6 @@
       "attendees": []
     },
     {
-      "id": "3b69",
-      "title": "Autem voluptas culpa",
-      "description": "You cannot change the name of the file. However, when you upload, you can change the destination filename. I don't know that you use to upload, but with the CopyIntoItems webservice, just give the name you want inside",
-      "image": "fresh-green-leaf-with-dew-drop-reflection-generated-by-ai.jpg",
-      "category": "cultural",
-      "startTime": "1972-07-13T00:27",
-      "endTime": "2010-08-18T21:35",
-      "location": "Velit aperiam molest",
-      "organizer": "9",
-      "totalSeats": 9,
-      "bookedSeats": 0,
-      "attendees": []
-    },
-    {
-      "id": "7cfe",
-      "title": "Quibusdam perferendi",
-      "description": "Perferendis reprehen",
-      "image": "Distant-Black-Hole-Concept.jpg",
-      "category": "charity",
-      "startTime": "2016-04-19T00:48",
-      "endTime": "1976-10-24T01:15",
-      "location": "Ipsa quos nisi in l",
-      "organizer": "9",
-      "totalSeats": 15,
-      "bookedSeats": 0,
-      "attendees": []
-    },
-    {
       "id": "bcec",
       "title": "Food Fiesta 2024",
       "description": "A culinary celebration showcasing gourmet dishes from around the world.",
@@ -247,46 +201,144 @@
       "attendees": []
     },
     {
-      "id": "8d99",
-      "title": "Nulla voluptas praes",
-      "description": "Dolorem et maiores e",
-      "image": "blog-bg.jpeg",
-      "category": "charity",
-      "startTime": "2024-10-05T18:17",
-      "endTime": "2024-10-08T06:35",
-      "location": "Consectetur incididu",
+      "id": "8ef3",
+      "title": "Tech Innovations Expo 2024",
+      "description": "Explore cutting-edge technology and innovation at the Tech Innovations Expo. This event brings together industry leaders to showcase the latest advancements in AI, robotics, and blockchain, offering insightful talks, product demos, and networking opportunities.",
+      "image": "expo.jpg",
+      "category": "technology",
+      "startTime": "2024-10-07T00:58",
+      "endTime": "2024-10-11T00:58",
+      "location": "UAE , Dubai",
       "organizer": "9",
-      "totalSeats": 59,
+      "totalSeats": 1000,
       "bookedSeats": 1,
       "attendees": [
-        "6"
+        "589a"
       ]
     },
     {
-      "id": "f56f",
-      "title": "Quia aperiam est ex",
-      "description": "Sed deleniti aut qui",
-      "image": "fresh-green-leaf-with-dew-drop-reflection-generated-by-ai.jpg",
+      "id": "4461",
+      "title": "Sustainability Summit 2024",
+      "description": "Join global experts at the Sustainability Summit to discuss environmental issues and solutions. Key topics include renewable energy, green infrastructure, and sustainable business practices. Gain actionable insights and collaborate on driving eco-friendly changes in various industries.",
+      "image": "sys.jpeg",
       "category": "business",
-      "startTime": "2024-10-12T10:52",
-      "endTime": "2024-10-19T02:13",
-      "location": "Ut nostrum nihil qui",
+      "startTime": "2024-10-09T01:03",
+      "endTime": "2024-10-10T01:03",
+      "location": "Amman, Jordan",
       "organizer": "9",
-      "totalSeats": 54,
+      "totalSeats": 600,
       "bookedSeats": 0,
       "attendees": []
     },
     {
-      "id": "e5ca",
-      "title": "Nam non adipisci eos",
-      "description": "Rerum eu ullamco est",
-      "image": "Distant-Black-Hole-Concept.jpg",
+      "id": "564b",
+      "title": "Startup Incubator Pitch Day",
+      "description": "Watch emerging startups present their innovative ideas to investors at Startup Incubator Pitch Day. This event showcases disruptive technologies and services, providing entrepreneurs a platform to secure funding and strategic partnerships, driving the next wave of innovation.",
+      "image": "startup-day.png",
+      "category": "business",
+      "startTime": "2024-10-30T01:16",
+      "endTime": "2024-11-02T01:16",
+      "location": "Amman, Jordan",
+      "organizer": "589a",
+      "totalSeats": 450,
+      "bookedSeats": 0,
+      "attendees": []
+    },
+    {
+      "id": "f7bf",
+      "title": "AI in Business Symposium",
+      "description": "Discover how artificial intelligence is transforming the business landscape at the AI in Business Symposium. Industry experts will share insights into AI applications in automation, customer service, and data analysis, helping companies stay ahead in a competitive market.",
+      "image": "Bus_AI_Symposium.png",
+      "category": "business",
+      "startTime": "2024-10-15T01:22",
+      "endTime": "2024-10-17T01:22",
+      "location": "New York, USA",
+      "organizer": "589a",
+      "totalSeats": 1000,
+      "bookedSeats": 0,
+      "attendees": []
+    },
+    {
+      "id": "95cb",
+      "title": "Digital Marketing Masterclass ",
+      "description": "Enhance your digital marketing skills at this comprehensive masterclass. Learn the latest strategies in SEO, social media, and content marketing from top industry professionals. This event is perfect for marketers looking to boost their online presence and brand visibility.",
+      "image": "Digital-Marketing.jpg",
       "category": "technology",
-      "startTime": "2024-10-12T01:08",
-      "endTime": "2024-10-19T15:10",
-      "location": "Ipsum accusantium Na",
+      "startTime": "2024-10-19T01:28",
+      "endTime": "2024-10-21T01:28",
+      "location": "Aqaba, Jordan",
+      "organizer": "337c",
+      "totalSeats": 220,
+      "bookedSeats": 0,
+      "attendees": []
+    },
+    {
+      "id": "6336",
+      "title": "Future of Education Conference",
+      "description": "Explore the latest trends in education technology and teaching methods at this transformative conference. Educators, policymakers, and innovators come together to discuss personalized learning, digital classrooms, and strategies for preparing students for future careers.",
+      "image": "future-of-education.jpg",
+      "category": "cultural",
+      "startTime": "2024-10-07T01:32",
+      "endTime": "2024-10-08T01:32",
+      "location": "Amman, Jordan",
+      "organizer": "337c",
+      "totalSeats": 250,
+      "bookedSeats": 0,
+      "attendees": []
+    },
+    {
+      "id": "d18c",
+      "title": "Urban Design and Architecture Forum",
+      "description": "Discover groundbreaking urban design and architecture solutions at this forum. Topics include smart cities, sustainable building practices, and innovative architectural trends that shape modern living spaces and improve urban quality of life for future generations.",
+      "image": "07-mck-archdaily.jpg",
+      "category": "cultural",
+      "startTime": "2024-10-07T01:54",
+      "endTime": "2024-10-10T01:54",
+      "location": "Duha, Qatar",
       "organizer": "9",
-      "totalSeats": 100,
+      "totalSeats": 850,
+      "bookedSeats": 0,
+      "attendees": []
+    },
+    {
+      "id": "6b7a",
+      "title": "Photography Expo",
+      "description": "Celebrate the art of photography at this expansive expo. Whether you're a professional or hobbyist, immerse yourself in workshops, gear showcases, and galleries featuring stunning works from around the globe, while learning from top photographers and industry experts.",
+      "image": "photography.jpg",
+      "category": "technology",
+      "startTime": "2024-10-25T02:00",
+      "endTime": "2024-10-28T02:00",
+      "location": "Cairo, Egypt",
+      "organizer": "10",
+      "totalSeats": 700,
+      "bookedSeats": 0,
+      "attendees": []
+    },
+    {
+      "id": "65bf",
+      "title": "Gaming Expo",
+      "description": "Immerse yourself in the world of gaming at this exciting expo. From console gaming to virtual reality, attendees can experience the latest releases, participate in tournaments, and explore the future of interactive entertainment with game developers and industry leaders.",
+      "image": "gaming.jpg",
+      "category": "games",
+      "startTime": "2024-10-28T02:05",
+      "endTime": "2024-10-30T02:05",
+      "location": "Amman, Jordan",
+      "organizer": "10",
+      "totalSeats": 340,
+      "bookedSeats": 0,
+      "attendees": []
+    },
+    {
+      "id": "4b60",
+      "title": "Cybersecurity Summit",
+      "description": " Strengthen your organization’s cybersecurity defenses at this crucial summit. Industry leaders and security experts share insights into the latest threats, risk management strategies, and technologies to protect sensitive data and ensure business continuity in a digital world.",
+      "image": "cybersecurity-summit.jpg",
+      "category": "technology",
+      "startTime": "2024-10-18T02:08",
+      "endTime": "2024-10-20T02:08",
+      "location": "Riyadh, KSA",
+      "organizer": "9",
+      "totalSeats": 450,
       "bookedSeats": 0,
       "attendees": []
     }
