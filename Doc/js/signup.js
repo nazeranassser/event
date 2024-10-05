@@ -7,7 +7,9 @@ window.onload = function() {
     function updateButtonVisibility() {
         if (isLoggedIn === "true") {
             logoutBtn.style.display = "inline-block"; 
-            bookNow.style.display = "none"; 
+            try {
+                bookNow.style.display = "none"; 
+            } catch (error) {}
         } else {
             logoutBtn.style.display = "none"; 
             bookNow.style.display = "inline-block"; 

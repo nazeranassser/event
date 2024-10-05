@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="assets/css/event-card.css" />
 
     <script>
-        document.body.onload = (localStorage.getItem('isLoggedIn') == 'false')? location.href = 'index.html':'';
+        document.body.onload = (localStorage.getItem('isLoggedIn') == 'false') ? location.href = 'index.html' : '';
     </script>
 
     <style>
@@ -122,7 +122,7 @@
             background-color: #3e049d;
         }
 
-        #dots:hover #opt-list{
+        #dots:hover #opt-list {
             display: block;
         }
     </style>
@@ -138,8 +138,8 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="index.html"><img style="height: 50px;" src="../event/assets/img/logo/homelogo.png"
-                                        alt="" /></a>
+                                <a href="index.html"><img style="height: 50px;"
+                                        src="../event/assets/img/logo/homelogo.png" alt="" /></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10 col-md-10">
@@ -147,7 +147,7 @@
                                 <!-- Main-menu -->
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
-                                      <ul id="navigation">
+                                        <ul id="navigation">
 
 
                                             <li><a href="index.html">Home</a></li>
@@ -162,16 +162,40 @@
                                     </nav>
                                 </div>
                                 <div id="alertContainer"></div>
-                                <!-- <button class="book-now-btn" id="logoutBtn">Logout</button> -->
-                                <!-- <div id="alertContainer"></div> -->
 
+                                <div class="header-right-btn f-right d-none d-lg-block ml-30"
+                                data-bs-toggle="modal" data-bs-target="#logoutModal"
+                                >
+                                    <a type="button" class="btn" id="logoutBtn"
+                                        style="border-radius: 50px; background-color: #1e036d; color:#fff;">Logout</a>
+                                </div>
+                                <!-- Logout Confirmation Modal -->
+                                <div class="modal fade" id="logoutModal" tabindex="-1"
+                                    aria-labelledby="logoutModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to log out?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-danger"
+                                                    id="confirmLogout">Logout</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Logout Confirmation Modal End -->
+<!-- 
                                 <div class="header-right-btn f-right d-none d-lg-block ml-30 ">
                                     <a href="login.html" class="btn" id="logoutBtn"
                                         style="border-radius: 50px; background-color: #1e036d;">Logout</a>
-                                </div>
-                                <!-- <div class="header-right-btn f-right d-none d-lg-block ml-30 ">
-                                    <a href="login.html" class="btn " id="BookNow"
-                                        style="border-radius: 50px; background-color: #1e036d;">Book Now!</a>
                                 </div> -->
                             </div>
                         </div>
@@ -187,9 +211,9 @@
     </header>
     <div style="display: flex; align-items: center;">
         <p style="color: #1e036d; font-weight: bold; margin-right: 15px; font-size: 18px;">
-          Welcome, <span id="usernameDisplay" style="color: #1e036d; font-weight: bold;"></span>!
+            Welcome, <span id="usernameDisplay" style="color: #1e036d; font-weight: bold;"></span>!
         </p>
-      </div>
+    </div>
 
     <section class="my-eventat">
         <div class="my-eventat-title pt-3">
@@ -362,8 +386,8 @@
                                         <span>Address:Amman-Jordan</span>
                                     </li>
                                     <li>
-                                      <i class="fas fa-mobile-alt"></i>
-    
+                                        <i class="fas fa-mobile-alt"></i>
+
                                         <a href="tel:+888044338899">+8880 44338899</a>
                                     </li>
                                     <li>
@@ -374,7 +398,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- Follow Us Section -->
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 text-center mb-50">
                         <div class="single-footer-caption">
@@ -393,14 +417,14 @@
                                             <span>Twitter: eventat.jo</span>
                                         </a>
                                     </li>
-                                    
+
                                     <li>
                                         <a href="#">
                                             <i class="fab fa-instagram"></i>
                                             <span>Instagram: eventat.jo</span>
                                         </a>
                                     </li>
-                                  
+
                                 </ul>
                             </div>
                         </div>
@@ -408,7 +432,7 @@
                 </div>
             </div>
         </div>
-    
+
         <!-- Footer Bottom Area -->
         <div class="footer-bottom-area footer-bg">
             <div class="container">
@@ -416,10 +440,13 @@
                     <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-xl-10 col-lg-8">
                             <div class="footer-copy-right">
-                                <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="#home" target="_blank">EventAt</a></p>
+                                <p>Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved | <a
+                                        href="#home" target="_blank">EventAt</a>
+                                </p>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -444,7 +471,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
-        <script src="Doc/js/signup.js"></script>
+    <script src="Doc/js/signup.js"></script>
 </body>
 
 
