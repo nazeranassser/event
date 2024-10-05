@@ -129,7 +129,7 @@ async function addEvent(form, start, end, img) {
 function isImg(image){
   const validImg = ["png", "jpg", "jpeg", "gif"]
 
-  if (validImg.indexOf(image.split(".")[image.length -1])){
+  if (validImg.indexOf(image.split(".")[image.length -1]) != -1){
     return true
   }
   return false
@@ -137,7 +137,7 @@ function isImg(image){
 
 
 function changeImgName(image){
-  const toRemove = "C:\\fakepath\\"
+  // const toRemove = "C:\\fakepath\\"
   let img = image.replace(/.*?C:\\fakepath\\/, "");
 
   console.log(image)
@@ -163,7 +163,7 @@ function checkCorrectDate(startDate, endDate){
   const start = new Date(startDate);
   const end = new Date(endDate);
 
-  if(startDate > endDate)
+  if(start > end)
     return false
   else
     return true

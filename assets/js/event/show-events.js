@@ -58,7 +58,6 @@ async function getMyBookedEvents(){
 }
 
 
-
 async function showEvents(events, container, own){
 
   const eventContainer = document.querySelector(container)
@@ -94,7 +93,6 @@ async function showEvents(events, container, own){
       eventContainer.appendChild(node)
       document.querySelector("#deleteBtn"+count)
       .onclick = function(){
-        console.log("deleteEvent : " + event.id)
   
         try {
           if(confirm("Are you sure to delete this event ?")){
