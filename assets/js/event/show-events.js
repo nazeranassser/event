@@ -83,32 +83,42 @@ async function showEvents(events, container, own){
         </div>
     `
 
-    let deleteBtn = ""
     if(own){
-      deleteBtn = document.createElement("div")
-      deleteBtn.innerHTML = `
+      let btn = document.createElement("div")
+      btn.innerHTML = `
           <div id="deleteBtn${count}" onclick="deleteEvent(${event.id})" class="p-2 mt-2 text-center"
           style="width:100%; background-color:red; border-radius: 4px; color: #fff; cursor: pointer;">Delete</div>
       `
+
+      node.appendChild(btn)
+      eventContainer.appendChild(node)
+      document.querySelector("#deleteBtn"+count)
+      .onclick = function(){
+        console.log("deleteEvent : " + event.id)
+  
+        try {
+          if(confirm("Are you sure to delete this event ?")){
+            fetch('http://localhost:3000/events/'+event.id, {
+              method: 'DELETE',
+            })
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      }
+  
+    }
+    else{
+      let unBookBtn = document.createElement("div")
+      unBookBtn.innerHTML = `
+          <div id="unBookBtn${count}" onclick="" class="p-2 mt-2 text-center"
+          style="width:100%; background-color:red; border-radius: 4px; color: #fff; cursor: pointer;">UnBook</div>
+      `
+
+      node.appendChild(unBookBtn)
+      eventContainer.appendChild(node)
     }
     
-    node.appendChild(deleteBtn)
-    eventContainer.appendChild(node)
-    document
-    .querySelector("#deleteBtn"+count)
-    .onclick = function(){
-      console.log("deleteEvent : " + event.id)
-
-      try {
-        if(confirm("Are you sure to delete this event ?")){
-          fetch('http://localhost:3000/events/'+event.id, {
-            method: 'DELETE',
-          })
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
 
     count++
   }
