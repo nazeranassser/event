@@ -273,9 +273,9 @@ async function viewEvents(filter, filterDate) {
         // Set the startDate to filterDate
         const startDate = new Date(filterDate);
         
-        // Set the endDate to 3 days from the filterDate
+        // Set the endDate to 7 days from the filterDate
         const endDate = new Date();
-        endDate.setDate(startDate.getDate() + 3);
+        endDate.setDate(startDate.getDate() + 7);
         
         // Call the timeFilter function with startDate and endDate
         events = await timeFilter(startDate, endDate);
@@ -284,46 +284,45 @@ async function viewEvents(filter, filterDate) {
         events = await getAllEvents();
     }
 
-    let box = document.getElementById("events-box");
+    const box = document.getElementById("events-box");
     let newHTML = '';
     let bookBtn, isBooked;
     let timeArray, date, time;
     let userInfo, userId, availableSeats;
 
-    if (localStorage.getItem('isLoggedIn') == 'true') {
+    if (localStorage.getItem('isLoggedIn') === 'true') {
         userInfo = JSON.parse(localStorage.getItem('userInfo'));
         userId = userInfo.id;
     }
 
-    for (let i = 0; i < events.length; i++) { //events loop
-        // Extract time and date from the date string
+    // Loop through events
+    for (let i = 0; i < events.length; i++) {
         timeArray = events[i].startTime.split('T');
         date = timeArray[0];
         time = timeArray[1];
-        // Add action buttons according of different situations
-        if (localStorage.getItem('isLoggedIn') == 'true') { // if logged in then:
-            if(compareDates(events[i].startTime, Date.now())){ // 
-                availableSeats = await checkAvailableSeats(events[i].id); // check the number of available seats
-            if(availableSeats > 0){ // if there are available seats: 
-                isBooked = await bookedOrNot(userId, events[i].id);
-                if (isBooked == true) { // if there are available seats and the user have booked a seat
-                    bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
-                } else {    // if there are available seats and the user DID NOT booke a seat
-                    bookBtn = `<button class="book-now-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="return bookSeat('${userId}','${events[i].id}')">Book</button>`;
-                }
-            }else if(isBooked != true){ // if there are NO available seats and the user DID NOT book a seat
-                bookBtn = `<button class="no-seats-btn book-now-btn disabled">Seats ran out</button>`;
-            }else{ // if there are No available seats and the user have booked a seat
-                bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
-                console.log(isBooked);
 
-            }
-            
-            }else{ //If the event date is passed
+
+        if (localStorage.getItem('isLoggedIn') === 'true') {  
+            if (compareDates(events[i].startTime, Date.now())) { 
+                availableSeats = await checkAvailableSeats(events[i].id);  
+
+                if (availableSeats > 0) { 
+                    isBooked = await bookedOrNot(userId, events[i].id);  
+
+                    if (isBooked) {  
+                        bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
+                    } else {
+                        bookBtn = `<button class="book-now-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="return bookSeat('${userId}','${events[i].id}')">Book</button>`;
+                    }
+                } else if (!isBooked) {
+                    bookBtn = `<button class="no-seats-btn book-now-btn disabled">Seats ran out</button>`;
+                } else {
+                    bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
+                }
+            } else {
                 bookBtn = `<button class="no-seats-btn book-now-btn disabled">Date passed</button>`;
             }
-            
-        } else { // if not logged in then:
+        } else {
             bookBtn = `<a href="login.html" class="btn card-btn">Book Now!</a>`;
         }
 
@@ -355,20 +354,3 @@ document.getElementById("cultural-filter-btn").onclick = function() { viewEvents
 document.getElementById("sport-filter-btn").onclick = function() { viewEvents('sport')};
 document.getElementById("games-filter-btn").onclick = function() { viewEvents('games')};
 // document.getElementById("body").onload = function() {viewEvents()};
-
-
-
-
-//////////////
-//////////// testing area
-// getAllEvents()
-(async () => {
-    // console.log(await getFilteredEvents('Entertainment'))
-    // console.log(await timeFilter('2024-11-04T03:39'));
-    // console.log(await checkAvailableSeats(3));
-
-  })()
-console.log(compareDates('2024-10-20T09:00:00', Date.now()));
-// console.log(Date.now());
-
-///////////////////
