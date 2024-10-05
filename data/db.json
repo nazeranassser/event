@@ -88,8 +88,7 @@
       "password": "Qwertyuio1",
       "publishedEvents": [],
       "registeredEvents": [
-        "8d99",
-        "5fa2"
+        "8d99"
       ]
     },
     {
@@ -281,10 +280,9 @@
       "location": "UAE, Dubai",
       "organizer": "d27b",
       "totalSeats": 1000,
-      "bookedSeats": 2,
+      "bookedSeats": 1000,
       "attendees": [
-        "d27b",
-        "9"
+        "d27b"
       ]
     }
   ]
