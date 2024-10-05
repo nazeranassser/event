@@ -54,7 +54,7 @@
     },
     {
       "id": "6",
-      "username": "mousa.alaaldin2000@gmail.com",
+      "username": "mousa",
       "email": "mousa.alaaldin2000@gmail.com",
       "publishedEvents": [],
       "password": "123456789Mm",
@@ -62,7 +62,8 @@
         5,
         4,
         3,
-        2
+        2,
+        "8d99"
       ]
     },
     {
@@ -256,8 +257,10 @@
       "location": "Consectetur incididu",
       "organizer": "9",
       "totalSeats": 59,
-      "bookedSeats": 0,
-      "attendees": []
+      "bookedSeats": 1,
+      "attendees": [
+        "6"
+      ]
     }
   ]
 }

@@ -137,7 +137,12 @@ async function loginUser(event) {
         if (validUser) {
             localStorage.setItem("isLoggedIn", "true"); 
 
-            localStorage.setItem("userInfo", JSON.stringify(data[userInfoIndex]));
+            // localStorage.setItem("userInfo", JSON.stringify(data[userInfoIndex]));
+            localStorage.setItem("userInfo", JSON.stringify({
+                username: data[userInfoIndex].username,
+                id: data[userInfoIndex].id
+               
+            }));
 
         
             alert("Welcome, " + data[userInfoIndex].username + "!");
