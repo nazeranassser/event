@@ -135,19 +135,16 @@ async function loginUser(event) {
         const userInfoIndex = data.findIndex(user => user.email === loginEmail.value );
 
         if (validUser) {
+            // تخزين معلومات المستخدم في localStorage
             localStorage.setItem("isLoggedIn", "true"); 
-
-            // localStorage.setItem("userInfo", JSON.stringify(data[userInfoIndex]));
             localStorage.setItem("userInfo", JSON.stringify({
                 username: data[userInfoIndex].username,
                 id: data[userInfoIndex].id
-               
             }));
 
-        
             alert("Welcome, " + data[userInfoIndex].username + "!");
-            
-          
+
+            // إعادة التوجيه بعد تسجيل الدخول
             window.location.href = "index.html";  
             
         } else {
@@ -164,5 +161,7 @@ async function loginUser(event) {
     loginEmail.value = "";
     loginPassword.value = "";
 }
+
+loginSubmit.addEventListener("click", loginUser);
 
 loginSubmit.addEventListener("click", loginUser);

@@ -91,9 +91,10 @@
                 <!-- <button class="book-now-btn" id="logoutBtn">Logout</button> -->
                 <!-- <div id="alertContainer"></div> -->
 
-                <div class="header-right-btn f-right d-none d-lg-block ml-30 ">
-                  <a href="index.html" class="btn" id="logoutBtn"
-                    style="border-radius: 50px; background-color: #1e036d;">Logout</a>
+                <div class="header-right-btn f-right d-none d-lg-block ml-30">
+                 
+                  <a href="index.html" class="btn" id="logoutBtn" style="border-radius: 50px; background-color: #1e036d;">Logout</a>
+                
                 </div>
                 <!-- Logout Confirmation Modal -->
                 <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel"
@@ -134,7 +135,12 @@
 
     <!-- Header End -->
   </header>
-
+  <div style="display: flex; align-items: center;">
+    <p style="color: #1e036d; font-weight: bold; margin-right: 15px; font-size: 18px;">
+      Welcome, <span id="usernameDisplay" style="color: #1e036d; font-weight: bold;"></span>!
+    </p>
+  </div>
+  
   <main id="home">
     <!--? slider Area Start-->
     <div class="slider-area position-relative">

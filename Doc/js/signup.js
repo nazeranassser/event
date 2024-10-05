@@ -37,3 +37,20 @@ window.onload = function() {
         }, 500);
     };
 };
+document.addEventListener("DOMContentLoaded", function() {
+    const usernameDisplay = document.getElementById("usernameDisplay");
+    
+   
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    
+
+    console.log(userInfo);
+
+    if (userInfo && userInfo.username) {
+      
+        usernameDisplay.textContent = userInfo.username;
+    } else {
+     
+        usernameDisplay.textContent = "Guest";
+    }
+});
