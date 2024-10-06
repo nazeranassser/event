@@ -457,8 +457,8 @@ async function viewEvents(filter, filterDate) {
 ///////// Add filtration to the page
 document.getElementById("all-filter-btn").onclick = function() {viewEvents()};
 document.getElementById("charity-filter-btn").onclick = function() {viewEvents('charity')}
-document.getElementById("technology-filter-btn").onclick = function() { viewEvents('Technology')};
-document.getElementById("business-filter-btn").onclick = function() { viewEvents('Business')};
+document.getElementById("technology-filter-btn").onclick = function() { viewEvents('technology')};
+document.getElementById("business-filter-btn").onclick = function() { viewEvents('business')};
 document.getElementById("food-filter-btn").onclick = function() { viewEvents('food')};
 document.getElementById("cultural-filter-btn").onclick = function() { viewEvents('cultural')};
 document.getElementById("sport-filter-btn").onclick = function() { viewEvents('sport')};
