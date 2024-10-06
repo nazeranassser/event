@@ -212,6 +212,20 @@
       "totalSeats": 450,
       "bookedSeats": 0,
       "attendees": []
+    },
+    {
+      "id": "d886",
+      "title": "Dubai Marathon 2024",
+      "description": "Join thousands of runners from around the world in one of the most exciting marathons in the region. The Dubai Marathon offers a scenic route through the heart of the city, with distances for all levels of runners.",
+      "image": "Dubai.png",
+      "category": "sport",
+      "startTime": "2024-10-24T11:39",
+      "endTime": "2024-10-24T13:39",
+      "location": "Dubai ",
+      "organizer": "6",
+      "totalSeats": 2000,
+      "bookedSeats": 0,
+      "attendees": []
     }
   ]
 }
