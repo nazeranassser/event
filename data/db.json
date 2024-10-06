@@ -1,58 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "toto",
-      "email": "jane@example.com",
-      "password": "Hashed_password2",
-      "publishedEvents": [],
-      "registeredEvents": []
-    },
-    {
-      "id": "2",
-      "username": "soso",
-      "email": "jane@example.com",
-      "password": "hashed_password2",
-      "publishedEvents": [],
-      "registeredEvents": [
-        1,
-        3
-      ]
-    },
-    {
-      "id": "3",
-      "username": "soso",
-      "email": "jane@example.com",
-      "password": "hashed_password2",
-      "publishedEvents": [],
-      "registeredEvents": [
-        1,
-        3
-      ]
-    },
-    {
-      "id": "4",
-      "username": "soso",
-      "email": "jane@example.com",
-      "password": "hashed_password2",
-      "publishedEvents": [],
-      "registeredEvents": [
-        1,
-        3
-      ]
-    },
-    {
-      "id": "5",
-      "username": "soso",
-      "email": "jane@example.com",
-      "password": "hashed_password2",
-      "publishedEvents": [],
-      "registeredEvents": [
-        1,
-        3
-      ]
-    },
-    {
       "id": "6",
       "username": "mousa",
       "email": "mousa.alaaldin2000@gmail.com",
