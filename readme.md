@@ -83,4 +83,4 @@ To set up and run EventAt, you'll need the following:
 3. Submit a pull request with a description of your changes.
 
 ## Contact
-For questions, contact us at: [support@eventat.com](mailto:support@eventat.com).
+For questions, contact us at: [alhajjaj0shams@gmail.com](mailto:alhajjaj0shams@gmail.com).
