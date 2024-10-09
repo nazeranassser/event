@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "6",
-      "username": "mousa",
+      "username": "mousa azmi",
       "email": "mousa.alaaldin2000@gmail.com",
       "publishedEvents": [],
       "password": "123456789Mm",
@@ -11,7 +11,12 @@
         4,
         3,
         2,
-        "8d99"
+        "8d99",
+        "d18c",
+        "6336",
+        "6b7a",
+        "4461",
+        "65bf"
       ]
     },
     {
@@ -98,8 +103,10 @@
       "location": "Amman, Jordan",
       "organizer": "9",
       "totalSeats": 600,
-      "bookedSeats": 0,
-      "attendees": []
+      "bookedSeats": 1,
+      "attendees": [
+        "6"
+      ]
     },
     {
       "id": "564b",
@@ -154,8 +161,10 @@
       "location": "Amman, Jordan",
       "organizer": "337c",
       "totalSeats": 250,
-      "bookedSeats": 0,
-      "attendees": []
+      "bookedSeats": 1,
+      "attendees": [
+        "6"
+      ]
     },
     {
       "id": "d18c",
@@ -168,8 +177,10 @@
       "location": "Duha, Qatar",
       "organizer": "9",
       "totalSeats": 850,
-      "bookedSeats": 0,
-      "attendees": []
+      "bookedSeats": 1,
+      "attendees": [
+        "6"
+      ]
     },
     {
       "id": "6b7a",
@@ -182,8 +193,10 @@
       "location": "Cairo, Egypt",
       "organizer": "10",
       "totalSeats": 700,
-      "bookedSeats": 0,
-      "attendees": []
+      "bookedSeats": 1,
+      "attendees": [
+        "6"
+      ]
     },
     {
       "id": "65bf",
@@ -196,8 +209,10 @@
       "location": "Amman, Jordan",
       "organizer": "10",
       "totalSeats": 340,
-      "bookedSeats": 0,
-      "attendees": []
+      "bookedSeats": 1,
+      "attendees": [
+        "6"
+      ]
     },
     {
       "id": "4b60",

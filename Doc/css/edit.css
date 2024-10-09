@@ -1,0 +1,100 @@
+.my-eventat {
+    background-color: #f8f9fa; /* لون خلفية فاتح */
+    padding: 40px 20px; /* مسافات داخلية */
+    border-radius: 10px; /* زوايا مستديرة */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+    text-align: center; /* محاذاة للنص في الوسط */
+}
+
+.eventat-heading {
+    color: #1e036d; /* لون النص */
+    font-size: 40px; /* حجم الخط */
+    font-weight: bold; /* جعل الخط عريض */
+    margin: 0; /* إزالة الهوامش الافتراضية */
+}
+
+.nav-tabs {
+    border-bottom: 2px solid #1e036d; /* خط سفلي ملون للقائمة */
+}
+
+.nav-link {
+    border: none; /* إزالة حدود الأزرار */
+    color: #1e036d; /* لون النص */
+}
+
+.nav-link.active {
+    background-color: #1e036d; /* خلفية زر نشط */
+    color: #ffffff; /* لون النص للزر النشط */
+}
+
+.form-section {
+    margin: 40px 0; /* مسافات حول قسم النموذج */
+}
+
+.form-container {
+    background-color: #ffffff; /* لون خلفية النموذج */
+    padding: 30px; /* مسافات داخلية للنموذج */
+    border-radius: 10px; /* زوايا مستديرة للنموذج */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* ظل خفيف للنموذج */
+}
+
+.form-group {
+    margin-bottom: 20px; /* مسافة بين العناصر */
+}
+
+label {
+    font-weight: bold; /* جعل النص عريض */
+}
+
+input[type="text"], 
+input[type="number"], 
+input[type="file"], 
+input[type="datetime-local"], 
+select, 
+textarea {
+    width: 100%; /* عرض كامل للعناصر */
+    padding: 10px; /* مسافات داخلية */
+    border: 1px solid #ccc; /* لون حدود */
+    border-radius: 5px; /* زوايا مستديرة */
+}
+
+input[type="file"] {
+    border: none; /* إزالة حدود لمدخل الصور */
+}
+
+button {
+    background-color: #1e036d; /* لون الخلفية للأزرار */
+    color: #ffffff; /* لون النص للأزرار */
+    padding: 10px 20px; /* مسافات داخلية للأزرار */
+    border: none; /* إزالة حدود */
+    border-radius: 5px; /* زوايا مستديرة */
+    cursor: pointer; /* تغيير المؤشر عند التمرير فوق الزر */
+    transition: background-color 0.3s; /* تأثير انتقال اللون عند التمرير */
+}
+
+button:hover {
+    background-color: #3f51b5; /* لون مختلف عند التمرير فوق الزر */
+}
+.text-danger {
+    font-size: 12px; /* حجم صغير لرسائل الخطأ */
+    margin-top: 5px; /* مسافة فوق رسائل الخطأ */
+}
+
+/* تصميم خاص للأقسام المختلفة مثل قسم الأحداث المنشورة والأحداث المحجوزة */
+.newspaper-section {
+    margin: 40px 0; /* مسافة حول قسم الأحداث */
+}
+
+.newspaper-container {
+    display: flex; /* عرض العناصر في صف */
+    flex-wrap: wrap; /* لف العناصر عند الحاجة */
+    gap: 20px; /* مسافة بين العناصر */
+}
+
+.newspaper-item {
+    flex: 1 1 300px; /* نمط العنصر مع حد أدنى للعرض */
+    background-color: #ffffff; /* خلفية بيضاء */
+    border-radius: 10px; /* زوايا مستديرة */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+    padding: 15px; /* مسافات داخلية */
+}

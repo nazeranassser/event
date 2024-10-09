@@ -1,3 +1,364 @@
+// // Check if the user is logged in
+// const isLogged = Boolean(localStorage.getItem('isLoggedIn'));
+
+// // Utility function to remove all instances of a specific value from an array
+// const removeElement = (arr, value) => arr.filter(item => item !== value);
+
+// // Fetch a single user by ID
+// const getUser = async (id) => {
+//     try {
+//         const response = await fetch(`http://localhost:3000/users/${id}`);
+//         if (!response.ok) throw new Error(`Response status: ${response.status}`);
+//         return await response.json();
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// };
+
+// // Fetch all users
+// const getAllUsers = async () => {
+//     try {
+//         const response = await fetch(`http://localhost:3000/users`);
+//         if (!response.ok) throw new Error(`Response status: ${response.status}`);
+//         return await response.json();
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// };
+
+// // Fetch all events
+// const getAllEvents = async () => {
+//     try {
+//         const response = await fetch(`http://localhost:3000/events`);
+//         if (!response.ok) throw new Error(`Response status: ${response.status}`);
+//         return await response.json();
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// };
+
+// // Fetch filtered events based on category
+// const getFilteredEvents = async (category) => {
+//     try {
+//         const response = await fetch(`http://localhost:3000/events`);
+//         if (!response.ok) throw new Error(`Response status: ${response.status}`);
+//         const events = await response.json();
+//         return events.filter(event => event.category.toLowerCase() === category.toLowerCase());
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// };
+
+// // Compare two dates
+// const compareDates = (date1, date2) => new Date(date1) >= new Date(date2);
+
+// // Filter events within a specific time range
+// const timeFilter = async (startDate, endDate) => {
+//     try {
+//         const events = await getAllEvents();
+//         return events.filter(event => {
+//             const eventTime = new Date(event.startTime);
+//             return eventTime >= startDate && eventTime <= endDate;
+//         });
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// };
+
+// // Fetch a single event by ID
+// const getEvent = async (id) => {
+//     try {
+//         const response = await fetch(`http://localhost:3000/events/${id}`);
+//         if (!response.ok) throw new Error(`Response status: ${response.status}`);
+//         return await response.json();
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// };
+
+// // Update a user's information
+// const updateUser = async (id, updatedFields) => {
+//     try {
+//         const response = await fetch(`http://localhost:3000/users/${id}`, {
+//             method: "PATCH",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify(updatedFields)
+//         });
+//         if (!response.ok) throw new Error(`Response status: ${response.status}`);
+//         return await response.json();
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// };
+
+// // Update an event's information
+// const updateEvent = async (id, updatedFields) => {
+//     try {
+//         const response = await fetch(`http://localhost:3000/events/${id}`, {
+//             method: "PATCH",
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify(updatedFields)
+//         });
+//         if (!response.ok) throw new Error(`Response status: ${response.status}`);
+//         return await response.json();
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// };
+
+// // Delete an event by ID
+// const deleteEvent = async (id) => {
+//     if (confirm("Are you sure you want to delete this event?")) {
+//         try {
+//             const response = await fetch(`http://localhost:3000/events/${id}`, {
+//                 method: "DELETE",
+//             });
+//             if (!response.ok) throw new Error(`Response status: ${response.status}`);
+//             // Optionally, refresh the events list after deletion
+//             viewEvents();
+//         } catch (error) {
+//             console.error(error.message);
+//         }
+//     }
+// };
+
+// // Check if a user has booked an event
+// const isBooked = async (userId, eventId) => {
+//     if (!isLogged) {
+//         console.log("Please log in first.");
+//         return 'notLogged';
+//     }
+
+//     try {
+//         const [user, event] = await Promise.all([getUser(userId), getEvent(eventId)]);
+//         const userHasBooked = user.registeredEvents.includes(eventId);
+//         const eventHasAttendee = event.attendees.includes(userId);
+//         return userHasBooked && eventHasAttendee;
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// };
+
+// // Check available seats for an event
+// const checkAvailableSeats = async (eventId) => {
+//     const event = await getEvent(eventId);
+//     return event.totalSeats - event.bookedSeats;
+// };
+
+// // Book a seat for a user at an event
+// const bookSeat = async (userId, eventId) => {
+//     if (!isLogged) {
+//         console.log("Please log in first.");
+//         return;
+//     }
+
+//     if (confirm("Are you sure you want to book a seat at this event?")) {
+//         try {
+//             const [user, event] = await Promise.all([getUser(userId), getEvent(eventId)]);
+//             const alreadyBooked = user.registeredEvents.includes(eventId) && event.attendees.includes(userId);
+
+//             if (!alreadyBooked) {
+//                 // Update user
+//                 const updatedUser = {
+//                     registeredEvents: [...user.registeredEvents, eventId]
+//                 };
+//                 await updateUser(userId, updatedUser);
+
+//                 // Update event
+//                 const updatedEvent = {
+//                     attendees: [...event.attendees, userId],
+//                     bookedSeats: event.bookedSeats + 1
+//                 };
+//                 await updateEvent(eventId, updatedEvent);
+
+//                 console.log("Seat booked successfully.");
+//             } else {
+//                 console.log("Already booked.");
+//             }
+//         } catch (error) {
+//             console.error(error.message);
+//         }
+//     }
+// };
+
+// // Unbook a seat for a user at an event
+// const unbookSeat = async (userId, eventId) => {
+//     if (!isLogged) {
+//         console.log("Please log in first.");
+//         return;
+//     }
+
+//     if (confirm("Are you sure you want to unbook this event?")) {
+//         try {
+//             const [user, event] = await Promise.all([getUser(userId), getEvent(eventId)]);
+//             const isBooked = user.registeredEvents.includes(eventId) && event.attendees.includes(userId);
+
+//             if (isBooked) {
+//                 // Update user
+//                 const updatedUser = {
+//                     registeredEvents: removeElement(user.registeredEvents, eventId)
+//                 };
+//                 await updateUser(userId, updatedUser);
+
+//                 // Update event
+//                 const updatedEvent = {
+//                     attendees: removeElement(event.attendees, userId),
+//                     bookedSeats: event.bookedSeats - 1
+//                 };
+//                 await updateEvent(eventId, updatedEvent);
+
+//                 console.log("Seat unbooked successfully.");
+//             } else {
+//                 console.log("Not booked yet.");
+//             }
+//         } catch (error) {
+//             console.error(error.message);
+//         }
+//     }
+// };
+
+// // Display events on the page with optional filtering
+// const viewEvents = async (filter = null, filterDate = null) => {
+//     try {
+//         let events;
+
+//         if (filter) {
+//             events = await getFilteredEvents(filter);
+//         } else if (filterDate) {
+//             const startDate = new Date(filterDate);
+//             const endDate = new Date(startDate);
+//             endDate.setDate(startDate.getDate() + 7);
+//             events = await timeFilter(startDate, endDate);
+//             console.log("Filtered by time range.");
+//         } else {
+//             events = await getAllEvents();
+//         }
+
+//         const eventsBox = document.getElementById("events-box");
+//         let htmlContent = '';
+
+//         const userInfo = isLogged ? JSON.parse(localStorage.getItem('userInfo')) : null;
+//         const userId = userInfo?.id || null;
+
+//         for (const [index, event] of events.entries()) {
+//             const [date, time] = event.startTime.split('T');
+//             const isOwner = isLogged && event.organizer === userId;
+//             let bookBtn = '';
+
+//             if (isLogged) {
+//                 if (compareDates(event.startTime, Date.now())) {
+//                     const availableSeats = await checkAvailableSeats(event.id);
+
+//                     if (availableSeats > 0) {
+//                         const booked = await isBooked(userId, event.id);
+
+//                         if (booked === true) {
+//                             bookBtn = `<button class="btn btn-danger" onclick="unbookSeat('${userId}', '${event.id}')">Unbook</button>`;
+//                         } else if (booked === 'notLogged') {
+//                             bookBtn = `<a href="login.html" class="btn btn-primary">Book Now!</a>`;
+//                         } else {
+//                             bookBtn = `<button class="btn btn-primary" onclick="bookSeat('${userId}', '${event.id}')">Book</button>`;
+//                         }
+//                     } else {
+//                         bookBtn = `<button class="btn btn-secondary disabled">Seats ran out</button>`;
+//                     }
+//                 } else {
+//                     bookBtn = `<button class="btn btn-secondary disabled">Date passed</button>`;
+//                 }
+
+//                 if (isOwner) {
+//                     bookBtn = `<button class="btn btn-danger" onclick="deleteEvent('${event.id}')">Delete Event</button>`;
+//                 }
+//             } else {
+//                 bookBtn = `<a href="login.html" class="btn btn-primary">Book Now!</a>`;
+//             }
+
+//             htmlContent += `
+//                 <div class="newspaper-box">
+//                     <img src="./assets/img/events/${event.image}" alt="Event Image" class="newspaper-img img-fluid" />
+//                     <h2 class="newspaper-title">
+//                         ${event.title} 
+//                         <span class="tags">#${event.category}</span>
+//                     </h2>
+//                     <p class="newspaper-description" id="description-${index}" style="max-height: 3.6em; overflow: hidden;">
+//                         ${event.description}
+//                         <span id="more-${index}" style="display: none;"></span>
+//                     </p>
+//                     <i class="fas fa-chevron-down toggle-description" onclick="toggleDescription(${index})"></i>
+//                     <div class="event-icons">
+//                         <p class="icon"><i class="fas fa-clock"></i> ${date} (${time})</p>
+//                         <p class="icon"><i class="fas fa-map-marker-alt"></i> ${event.location}</p>
+//                         <p class="icon"><i class="fa-solid fa-chair"></i> Seats: ${event.bookedSeats}/${event.totalSeats}</p>
+//                     </div>
+//                     ${bookBtn}
+//                 </div>`;
+//         }
+
+//         eventsBox.innerHTML = htmlContent;
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// };
+
+// // Toggle the full description of an event
+// const toggleDescription = (index) => {
+//     const description = document.getElementById(`description-${index}`);
+//     const moreText = document.getElementById(`more-${index}`);
+//     const toggleIcon = description.nextElementSibling;
+
+//     if (description.style.maxHeight) {
+//         description.style.maxHeight = null;
+//         moreText.style.display = "none";
+//         toggleIcon.classList.remove('expanded');
+//     } else {
+//         description.style.maxHeight = description.scrollHeight + "px";
+//         moreText.style.display = "inline";
+//         toggleIcon.classList.add('expanded');
+//     }
+// };
+
+// // Event listeners for filter buttons
+// document.getElementById("all-filter-btn").addEventListener("click", () => viewEvents());
+// document.getElementById("charity-filter-btn").addEventListener("click", () => viewEvents('charity'));
+// document.getElementById("technology-filter-btn").addEventListener("click", () => viewEvents('Technology'));
+// document.getElementById("business-filter-btn").addEventListener("click", () => viewEvents('Business'));
+// document.getElementById("food-filter-btn").addEventListener("click", () => viewEvents('food'));
+// document.getElementById("cultural-filter-btn").addEventListener("click", () => viewEvents('cultural'));
+// document.getElementById("sport-filter-btn").addEventListener("click", () => viewEvents('sport'));
+// document.getElementById("games-filter-btn").addEventListener("click", () => viewEvents('games'));
+
+// // Initialize the events view on page load
+// window.addEventListener("DOMContentLoaded", () => viewEvents());
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let isLogged = Boolean(localStorage.getItem('isLoggedIn'));
 // console.log(`logged: ${isLogged}`);
 function deleteElement(arr, value){ // return a new array without all elements with a specific value
@@ -364,18 +725,14 @@ async function viewEvents(filter, filterDate) {
 async function viewEvents(filter, filterDate) {
     let events;
 
-    // check if there is a filter, then apply it
+    // Check if there is a filter, then apply it
     if (filter) {
         events = await getFilteredEvents(filter);
     } else if (filterDate) {
-        // Set the startDate to filterDate
         const startDate = new Date(filterDate);
-        
-        // Set the endDate to 7 days from the filterDate
         const endDate = new Date();
         endDate.setDate(startDate.getDate() + 7);
         
-        // Call the timeFilter function with startDate and endDate
         events = await timeFilter(startDate, endDate);
         console.log("Filtered by time range");
     } else {
@@ -388,7 +745,7 @@ async function viewEvents(filter, filterDate) {
     let timeArray, date, time;
     let userInfo, userId, availableSeats, isOwner;
 
-    // Fix: Parse user information only once
+    // Parse user information only once
     if (localStorage.getItem('isLoggedIn') === 'true') {
         userInfo = JSON.parse(localStorage.getItem('userInfo'));
         userId = userInfo.id;
@@ -396,15 +753,12 @@ async function viewEvents(filter, filterDate) {
 
     // Loop through events
     for (let i = 0; i < events.length; i++) {
-        // Extract time and date from the date string
         timeArray = events[i].startTime.split('T');
         date = timeArray[0];
         time = timeArray[1];
 
-        // Check if the current user is the event owner
         isOwner = events[i].organizer === userId;
 
-        // Add action buttons depending on the user state and event status
         if (localStorage.getItem('isLoggedIn') === 'true') {
             if (compareDates(events[i].startTime, Date.now())) {
                 availableSeats = await checkAvailableSeats(events[i].id);
@@ -413,32 +767,35 @@ async function viewEvents(filter, filterDate) {
                     isBooked = await bookedOrNot(userId, events[i].id);
 
                     if (isBooked) {
-                        bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
+                        bookBtn = `<button class="btn btn-danger" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
                     } else {
-                        bookBtn = `<button class="book-now-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="return bookSeat('${userId}','${events[i].id}')">Book</button>`;
+                        bookBtn = `<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="return bookSeat('${userId}','${events[i].id}')">Book</button>`;
                     }
                 } else if (!isBooked) {
-                    bookBtn = `<button class="no-seats-btn book-now-btn disabled">Seats ran out</button>`;
+                    bookBtn = `<button class="btn btn-secondary disabled">Seats ran out</button>`;
                 } else {
-                    bookBtn = `<button class="booked-btn book-now-btn" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
+                    bookBtn = `<button class="btn btn-danger" onclick="UnBookSeat('${userId}','${events[i].id}')">UnBook</button>`;
                 }
             } else {
-                bookBtn = `<button class="no-seats-btn book-now-btn disabled">Date passed</button>`;
+                bookBtn = `<button class="btn btn-secondary disabled">Date passed</button>`;
             }
 
-            // Add "Edit Event" button if the user is the event owner
             if (isOwner) {
-                bookBtn = `<button class="booked-btn book-now-btn" onclick="deleteEvent('${events[i].id}')">Delete Event</button>`;
+                bookBtn = `<button class="btn btn-danger" onclick="deleteEvent('${events[i].id}')">Delete Event</button>`;
             }
         } else {
-            bookBtn = `<a href="login.html" class="btn card-btn">Book Now!</a>`;
+            bookBtn = `<a href="login.html" class="btn btn-primary">Book Now!</a>`;
         }
 
         newHTML += `
         <div class="newspaper-box">
-            <img src="./assets/img/events/${events[i].image}" alt="Event Image" class="newspaper-img" />
+            <img src="./assets/img/events/${events[i].image}" alt="Event Image" class="newspaper-img img-fluid" />
             <h2 class="newspaper-title">${events[i].title} <span class="tags">#${events[i].category}</span></h2>
-            <p class="newspaper-description">${events[i].description}</p>
+            <p class="newspaper-description" id="description-${i}" style="max-height: 3.6em; overflow: hidden;">
+                ${events[i].description}
+                <span id="more-${i}" style="display: none;"> </span>
+            </p>
+            <i class="fas fa-chevron-down toggle-description" onclick="toggleDescription(${i})"></i>
             <div class="event-icons">
                 <p class="icon"><i class="fas fa-clock"></i> ${date} (${time})</p>
                 <p class="icon"><i class="fas fa-map-marker-alt"></i> ${events[i].location}</p>
@@ -452,6 +809,22 @@ async function viewEvents(filter, filterDate) {
     box.innerHTML = newHTML;
 }
 
+// Function to toggle the description
+function toggleDescription(index) {
+    const descriptionElement = document.getElementById(`description-${index}`);
+    const moreTextElement = document.getElementById(`more-${index}`);
+    
+    // Toggle the max-height to show/hide the description
+    if (descriptionElement.style.maxHeight) {
+        descriptionElement.style.maxHeight = null;
+        moreTextElement.style.display = "none";
+    } else {
+        descriptionElement.style.maxHeight = descriptionElement.scrollHeight + "px";
+        moreTextElement.style.display = "inline";
+    }
+}
+
+
 
 
 ///////// Add filtration to the page
@@ -464,3 +837,13 @@ document.getElementById("cultural-filter-btn").onclick = function() { viewEvents
 document.getElementById("sport-filter-btn").onclick = function() { viewEvents('sport')};
 document.getElementById("games-filter-btn").onclick = function() { viewEvents('games')};
 // document.getElementById("body").onload = function() {viewEvents()};
+
+
+
+
+
+
+
+
+
+

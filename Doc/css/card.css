@@ -1,0 +1,79 @@
+.newspaper-section {
+    padding: 30px 0; /* إضافة حواف للقسم */
+}
+
+.newspaper-box {
+    border: 1px solid #ddd; /* إضافة إطار لصندوق الأحداث */
+    border-radius: 10px; /* حواف مدورة */
+    padding: 15px; /* إضافة حواف داخلية */
+    display: flex; /* استخدام Flexbox */
+    flex-direction: column; /* توجيه العمود */
+    justify-content: space-between; /* توزيع المساحة */
+    height: 100%; /* ملء الصندوق */
+    transition: transform 0.3s; /* تأثير التحول عند المرور */
+    background-color: #fff; /* لون خلفية الصندوق */
+}
+
+.newspaper-box:hover {
+    transform: translateY(-10px); /* تأثير الرفع عند التمرير */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* إضافة ظل للصندوق عند التمرير */
+}
+
+.newspaper-img {
+    height: 200px; /* تعيين ارتفاع ثابت للصورة */
+    object-fit: cover; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    border-radius: 10px; /* حواف مدورة للصورة */
+}
+
+.newspaper-title {
+    font-size: 1.5rem; /* حجم خط العنوان */
+    margin: 15px 0; /* هوامش العنوان */
+}
+
+.newspaper-description {
+    max-height: 80px; /* تحديد ارتفاع أقصى للوصف */
+    overflow: hidden; /* إخفاء النص الزائد */
+}
+
+.book-now-btn, .read-more-btn {
+    background-color: #FF4B2B; /* لون خلفية الزر */
+    color: white; /* لون نص الزر */
+    border: none; /* إزالة الحدود */
+    border-radius: 5px; /* حواف مدورة */
+    padding: 10px; /* إضافة حواف داخلية */
+    cursor: pointer; /* تغيير شكل المؤشر عند المرور على الزر */
+    margin-top: 10px; /* إضافة مسافة بين الأزرار */
+}
+
+.book-now-btn:hover, .read-more-btn:hover {
+    background-color: #FF416C; /* تغيير اللون عند التمرير */
+}
+.newspaper-section {
+    padding: 30px 0; /* إضافة حواف للقسم */
+}
+
+.newspaper-box {
+    transition: transform 0.3s; /* تأثير التحول عند المرور */
+    background-color: #fff; /* لون خلفية الصندوق */
+}
+
+.newspaper-box:hover {
+    transform: translateY(-5px); /* تأثير الرفع عند التمرير */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* إضافة ظل للصندوق عند التمرير */
+}
+
+.newspaper-img {
+    height: 200px; /* تعيين ارتفاع ثابت للصورة */
+    object-fit: cover; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    border-radius: 10px; /* حواف مدورة للصورة */
+}
+
+.newspaper-title {
+    font-size: 1.5rem; /* حجم خط العنوان */
+    margin: 15px 0; /* هوامش العنوان */
+}
+
+.newspaper-description {
+    max-height: 80px; /* تحديد ارتفاع أقصى للوصف */
+    overflow: hidden; /* إخفاء النص الزائد */
+}

@@ -50,100 +50,73 @@
 
   <!-- Preloader Start -->
   <header>
-    <!--? Header Start -->
-    <div class="header-area">
-      <div class="main-header header-sticky">
-        <div class="container-fluid">
-          <div class="row align-items-center">
-            <!-- Logo -->
-            <div class="col-xl-2 col-lg-2 col-md-1">
-              <div class="logo">
-                <a href="index.html"><img style="height: 65px; margin-bottom: 8px" src="assets/img/logo/homelogo.png" alt=""></a>
-              </div>
-            </div>
-            <div class="col-xl-10 col-lg-10 col-md-10">
-              <div class="menu-main d-flex align-items-center justify-content-end">
-
-                <!-- Main-menu -->
-              <div class="main-menu f-right d-none d-lg-block">
-                    <nav>
-                      <ul id="navigation">
-
-
-                      <li><a href="index.html">Home</a></li>
-                      <li><a href="events.html">Events</a></li>
-                      <li class="isAuth"><a href="Edit.html">My Eventat</a></li>
-
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="#footer">Contact Us</a></li>
-
-
-                    </ul>
-                  </nav>
-                </div>
-                <div id="alertContainer"></div>
-                <!-- <button class="book-now-btn" id="logoutBtn">Logout</button> -->
-                <!-- <div id="alertContainer"></div> -->
-
-                <div class="header-right-btn f-right d-none d-lg-block ml-30">
-                 
-                  <a href="index.html" class="btn" id="logoutBtn" style="border-radius: 50px; background-color: rgb(30, 3, 109); display: inline-block;">Logout</a>
-                
-                </div>                 
-                  <div style="display: flex;">
-        <p style="color: #1e036d;font-weight: bold;margin-right: 15px;font-size: 18px;margin: 20px;">
-          Welcome, <span id="usernameDisplay" style="color: #1e036d; font-weight: bold;">mousa</span>!
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container-fluid">
+    
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/img/logo/homelogo.png" alt="Logo" style="height: 65px;" />
+        </a>
+        
+        <!-- زر التبديل للقائمة على الشاشات الصغيرة -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- قائمة التنقل -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto me-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="events.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Edit.html">My Eventat</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">Contact Us</a>
+            </li>
+          </ul>
+          
+         
+          <div class="d-flex align-items-center">
+             <p style="color: #1e036d;font-weight: bold;margin-right: 15px;font-size: 18px;margin: 20px;">
+          Welcome, <span id="usernameDisplay" style="color: #1e036d; font-weight: bold;"></span>!
         </p>
-      </div>                
-                <!-- Logout Confirmation Modal -->
-                <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        Are you sure you want to log out?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger" id="confirmLogout">Logout</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Logout Confirmation Modal End -->
-
-                <div class="header-right-btn f-right d-none d-lg-block ml-30 ">
-                  <a href="login.html" class="btn " id="BookNow" style="border-radius: 50px; background-color: rgb(30, 3, 109); display: none;">Book Now!</a>
-                </div>
-              </div>
-            </div>
-            <!-- Mobile Menu -->
-            <div class="col-12">
-              <div class="mobile_menu d-block d-lg-none"><div class="slicknav_menu"><a href="#" aria-haspopup="true" role="button" tabindex="0" class="slicknav_btn slicknav_collapsed"><span class="slicknav_menutxt">MENU</span><span class="slicknav_icon"><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span><span class="slicknav_icon-bar"></span></span></a><ul class="slicknav_nav slicknav_hidden" aria-hidden="true" role="menu" style="display: none;">
-
-
-                      <li><a href="index.html" role="menuitem" tabindex="-1">Home</a></li>
-                      <li><a href="events.html" role="menuitem" tabindex="-1">Events</a></li>
-                      <li class="isAuth"><a href="Edit.html" role="menuitem" tabindex="-1">My Eventat</a></li>
-
-                      <li><a href="about.html" role="menuitem" tabindex="-1">About Us</a></li>
-                      <li><a href="#footer" role="menuitem" tabindex="-1">Contact Us</a></li>
-
-
-                    </ul></div></div>
-            </div>
+        
+            <a href="#" class="btn btn-custom me-2" id="logoutBtn" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+            <a href="login.html" class="btn btn-custom" id="BookNow" style="display: none;">Book Now!</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  
+    <!-- Logout Confirmation Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to log out?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" id="confirmLogout">Logout</button>
           </div>
         </div>
       </div>
     </div>
-
-
-    <!-- Header End -->
+    <!-- Logout Confirmation Modal End -->
   </header>
-  
+
   <main id="home">
     <!--? slider Area Start-->
     <div class="slider-area position-relative">
@@ -194,60 +167,54 @@
           <div class="col-lg-5 col-md-8">
             <div class="section-tittle text-center mb-50">
               <h2>Don't Miss Out Upcoming Events!</h2>
-
             </div>
           </div>
         </div>
         <section class="newspaper-section">
           <div class="newspaper-container" id="events-box">
             <div class="newspaper-box">
-              <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image"
-                class="newspaper-img" />
-              <h2 class="newspaper-title">Charity Event 1</h2>
-              <p class="newspaper-description">
-                Join us for a charity event to support a great cause. Enjoy fun activities and support the community.
-              </p>
-              <div class="event-icons">
-                <span class="icon"><i class="fas fa-clock"></i> 10:00 AM</span>
-                <span class="icon"><i class="fas fa-map-marker-alt"></i> AMMAN</span>
-              </div>
-              <button class="book-now-btn">Book Now</button>
+              <a href="event1.html"> <!-- Link to another page -->
+                <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image" class="newspaper-img" />
+                <h2 class="newspaper-title">Charity Event 1</h2>
+                <p class="newspaper-description">Join us for a charity event to support a great cause.</p>
+                <div class="event-icons">
+                  <span class="icon"><i class="fas fa-clock"></i> 10:00 AM</span>
+                  <span class="icon"><i class="fas fa-map-marker-alt"></i> AMMAN</span>
+                </div>
+                <button class="book-now-btn">Book Now</button>
+              </a>
             </div>
-
+    
             <div class="newspaper-box">
-              <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image"
-                class="newspaper-img" />
-              <h2 class="newspaper-title">Charity Event 1</h2>
-              <p class="newspaper-description">
-                Join us for a charity event to support a great cause. Enjoy fun activities and support the community.
-              </p>
-              <div class="event-icons">
-                <span class="icon"><i class="fas fa-clock"></i> 10:00 AM</span>
-                <span class="icon"><i class="fas fa-map-marker-alt"></i> AMMAN</span>
-
-              </div>
-              <button class="book-now-btn">Book Now</button>
+              <a href="event2.html"> <!-- Link to another page -->
+                <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image" class="newspaper-img" />
+                <h2 class="newspaper-title">Charity Event 1</h2>
+                <p class="newspaper-description">Join us for a charity event to support a great cause.</p>
+                <div class="event-icons">
+                  <span class="icon"><i class="fas fa-clock"></i> 10:00 AM</span>
+                  <span class="icon"><i class="fas fa-map-marker-alt"></i> AMMAN</span>
+                </div>
+                <button class="book-now-btn">Book Now</button>
+              </a>
             </div>
-
+    
             <div class="newspaper-box">
-              <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image"
-                class="newspaper-img" />
-              <h2 class="newspaper-title">Charity Event 2</h2>
-              <p class="newspaper-description">
-                Join us for a charity event to support a great cause. Enjoy fun activities and support the community.
-              </p>
-              <div class="event-icons">
-                <span class="icon"><i class="fas fa-clock"></i> 12:00 PM</span>
-                <span class="icon"><i class="fas fa-map-marker-alt"></i> AMMAN</span>
-              </div>
-              <button class="book-now-btn">Book Now</button>
+              <a href="event3.html"> <!-- Link to another page -->
+                <img src="https://www.meydanfz.ae/wp-content/uploads/2021/10/Events.png" alt="Event Image" class="newspaper-img" />
+                <h2 class="newspaper-title">Charity Event 2</h2>
+                <p class="newspaper-description">Join us for a charity event to support a great cause.</p>
+                <div class="event-icons">
+                  <span class="icon"><i class="fas fa-clock"></i> 12:00 PM</span>
+                  <span class="icon"><i class="fas fa-map-marker-alt"></i> AMMAN</span>
+                </div>
+                <button class="book-now-btn">Book Now</button>
+              </a>
             </div>
           </div>
         </section>
-
-      </div>
       </div>
     </section>
+    
     <!-- Blog Area End -->
 
 
@@ -257,7 +224,7 @@
       <h2>Snapshots from Our Events</h2>
 
     </div>
-    <div class="gallery-area fix" style="margin-bottom: 15%;">
+    <div class="gallery-area fix" style="margin-bottom: 5%;">
       <div class="container-fluid p-0">
         <div class="row no-gutters">
           <div class="col-lg-3 col-md-3 col-sm-6">

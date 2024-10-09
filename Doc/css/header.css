@@ -1,0 +1,72 @@
+/* تنسيق القائمة الرئيسية */
+.main-menu ul {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.main-menu ul li {
+  margin-right: 15px; /* تقليل المسافة بين عناصر القائمة */
+}
+
+.main-menu ul li:last-child {
+  margin-right: 0;
+}
+
+.main-menu ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+.main-menu ul li a:hover {
+  color: #1e036d; /* لون عند المرور بالفأرة */
+}
+
+/* تنسيق زر الخروج وزر "Book Now" */
+.btn-custom {
+  border-radius: 50px;
+  background-color: #1e036d;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.btn-custom:hover {
+  background-color: #150b6f;
+  color: #fff;
+}
+
+/* تنسيق الجملة الترحيبية */
+.welcome-message {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* ضبط الـ Flexbox للهيدر لجعله في سطر واحد */
+.menu-main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+}
+
+/* ضمان عدم التفاف العناصر في الشاشات الكبيرة */
+@media (min-width: 992px) {
+  .menu-main {
+      flex-wrap: nowrap;
+  }
+}
+
+/* تحسين استجابة الهيدر على الشاشات الصغيرة */
+@media (max-width: 991px) {
+  .welcome-message {
+      display: none; /* إخفاء الجملة الترحيبية على الشاشات الصغيرة */
+  }
+
+  .header-right-btn {
+      margin-left: 10px;
+  }
+}
